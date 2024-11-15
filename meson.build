@@ -47,5 +47,5 @@ blink_test = custom_target(
   build_by_default: true,
   command: [cc, c_args, '-o', '@OUTPUT@', '@INPUT@'],
   input: [blink, common],
-  output: 'blink.bin',
+  output: 'blink.hex',
 )
