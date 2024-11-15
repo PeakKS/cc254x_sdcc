@@ -5,7 +5,7 @@ project (
 cc = find_program('sdcc')
 
 c_args = [
-  '-std=c99',
+  '--std-sdcc99',
   '-mmcs51',
   '--model-medium',
   '--xram-loc 0x0000',

@@ -69,7 +69,7 @@ static void basicUsbInit()
     // enable USB and USB PLL
     USBCTRL |= (1 << 1) | (1 << 0);
     // wait for PLL to lock
-    while( ! USBCTRL & (1 << 7)){}
+    while (!(USBCTRL & (1 << 7))) {}
 
     usbSuspendMode = 0;
 
@@ -105,10 +105,10 @@ void usbPoll()
     {
         enableUsbPullup();
         SLEEP |= (1<<7);            // Enable the USB module (SLEEP.USB_EN = 1).
-        __asm nop __endasm;         // Datasheet doesn't say so, but David suspects we need some NOPs here before writing to USB registers.
-        __asm nop __endasm;
-        __asm nop __endasm;
-        __asm nop __endasm;
+        __asm__("nop");             // Datasheet doesn't say so, but David suspects we need some NOPs here before writing to USB registers.
+        __asm__("nop");
+        __asm__("nop");
+        __asm__("nop");
         usbDeviceState = USB_STATE_POWERED;
 
         basicUsbInit();
