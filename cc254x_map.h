@@ -12,8 +12,10 @@
 #define _CC254X_MAP_H
 
 // Avoid false-alarm syntax errors in Eclipse.
-#ifdef __CDT_PARSER__
+#if defined(__CDT_PARSER__) || defined(__INTELLISENSE__)
 #define __sfr
+#define __sfr16
+#define __sbit
 #define __at(x)
 #define __xdata
 #define __interrupt(x)
@@ -31,7 +33,7 @@
   SBIT(address+6, bit6) \
   SBIT(address+7, bit7)
 
-#if defined SDCC || defined __CDT_PARSER__
+#if defined (__SDCC) || defined (__CDT_PARSER__) || defined (__INTELLISENSE__)
 // Syntax for the SDCC (Small Device C Compiler).
 #define SFR(address, name) static __sfr __at (address) name;
 #define SBIT(address, name) static __sbit __at (address) name;

@@ -23,7 +23,7 @@ typedef unsigned long  uint32;
 /** A signed 32-bit integer.  The range of this data type is -2,147,483,648 to 2,147,483,647. **/
 typedef signed   long  int32;
 
-#ifdef SDCC
+#if defined (__SDCC) && !(defined(__CDT_PARSER__) || defined(__INTELLISENSE__))
 
 /** A 1-bit value that is stored in the processor's bit-addressable memory region.
  *  The CC2511 has 16 bytes of user-defined bit-addressable memory, so you can have at
@@ -66,7 +66,7 @@ typedef __bit BIT;
 
 #define CODE_TO_XDATA(addr) ((uint8 XDATA *)addr + 0x8000)
 
-#elif defined(__CDT_PARSER__)
+#elif defined(__CDT_PARSER__) || defined(__INTELLISENSE__)
 
 // Avoid syntax and semantic errors in eclipse.
 #define CODE

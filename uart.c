@@ -6,7 +6,7 @@
 #include "cc254x_map.h"
 #include "cc254x_types.h"
 
-#if defined(__CDT_PARSER__)
+#if defined(__CDT_PARSER__) || defined(__INTELLISENSE__)
 #define UART0
 #endif
 

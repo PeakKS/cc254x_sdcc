@@ -3,11 +3,9 @@ project (
 )
 
 cc = find_program('sdcc')
-ld = find_program('sdld')
-ar = find_program('sdar')
 
 c_args = [
-  '-O0',
+  '-std=c99',
   '-mmcs51',
   '--model-medium',
   '--xram-loc 0x0000',
@@ -41,11 +39,42 @@ common = compiler.process(
   ],
 )
 
-blink = compiler.process('test_blink.c')
-
-blink_test = custom_target(
+custom_target(
   build_by_default: true,
   command: [cc, c_args, '-o', '@OUTPUT@', '@INPUT@'],
-  input: [blink, common],
-  output: 'blink.hex',
+  input: [
+    compiler.process('test_blink.c'),
+    common,
+  ],
+  output: 'test_blink.hex',
+)
+
+custom_target(
+  build_by_default: true,
+  command: [cc, c_args, '-o', '@OUTPUT@', '@INPUT@'],
+  input: [
+    compiler.process('test_time.c'),
+    common,
+  ],
+  output: 'test_time.hex',
+)
+
+custom_target(
+  build_by_default: true,
+  command: [cc, c_args, '-o', '@OUTPUT@', '@INPUT@'],
+  input: [
+    compiler.process('test_uart.c'),
+    common,
+  ],
+  output: 'test_uart.hex',
+)
+
+custom_target(
+  build_by_default: true,
+  command: [cc, c_args, '-o', '@OUTPUT@', '@INPUT@'],
+  input: [
+    compiler.process('test_usb.c'),
+    common,
+  ],
+  output: 'test_usb.hex',
 )
