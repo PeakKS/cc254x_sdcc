@@ -2,7 +2,12 @@ project (
   'cc2540',
 )
 
-flags = [
+cc = find_program('sdcc')
+ld = find_program('sdld')
+ar = find_program('sdar')
+
+c_args = [
+  '-O0',
   '-mmcs51',
   '--model-medium',
   '--xram-loc 0x0000',
@@ -13,9 +18,20 @@ flags = [
   '-Wa,-p'
 ]
 
-common_lib = static_library (
-  'common',
-  sources: [
+compiler = generator(
+  cc,
+  arguments: [
+    c_args,
+    '-o',
+    '@OUTPUT@',
+    '-c',
+    '@INPUT@',
+  ],
+  output: '@BASENAME@.rel',
+)
+
+common = compiler.process(
+  [
     'delay.c',
     'time.c',
     'uart.c',
@@ -23,23 +39,13 @@ common_lib = static_library (
     'usb_cdc_acm.c',
     'util.c',
   ],
-  c_args: flags,
 )
 
-common_dep = declare_dependency (
-  link_with: [
-    common_lib,
-  ],
-  include_directories: '/usr/share/sdcc/include',
-)
+blink = compiler.process('test_blink.c')
 
-executable(
-  'blink',
-  sources: [
-    'test_blink.c',
-  ],
-  c_args: flags,
-  dependencies: [
-    common_dep,
-  ]
+blink_test = custom_target(
+  build_by_default: true,
+  command: [cc, c_args, '-o', '@OUTPUT@', '@INPUT@'],
+  input: [blink, common],
+  output: 'blink.bin',
 )
