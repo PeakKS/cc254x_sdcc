@@ -587,7 +587,9 @@ void usbSleep()
 
         // Put the device to sleep by following the recommended pseudo code in the datasheet section 12.1.3:
         SLEEP = (SLEEP & ~3) | 1;    // SLEEP.MODE = 1 : Selects Power Mode 1 (PM1).
-        __asm nop __endasm; __asm nop __endasm; __asm nop __endasm;
+        __asm__("nop");
+        __asm__("nop");
+        __asm__("nop");
         if (SLEEP & 3)
         {
             P1_0 = 1;
