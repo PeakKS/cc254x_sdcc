@@ -1,10 +1,13 @@
-project (
+project(
   'cc2540',
 )
 
 cc = find_program('sdcc')
+cctool = find_program('cc-tool', '../cc-tool/cc-tool')
+ccflash = [cctool, '-v', '-e', '-w']
 
 c_args = [
+  '-I/usr/share/sdcc/include',
   '--std-sdcc99',
   '-mmcs51',
   '--model-medium',
@@ -39,7 +42,7 @@ common = compiler.process(
   ],
 )
 
-custom_target(
+test_blink = custom_target(
   build_by_default: true,
   command: [cc, c_args, '-o', '@OUTPUT@', '@INPUT@'],
   input: [
@@ -49,7 +52,7 @@ custom_target(
   output: 'test_blink.hex',
 )
 
-custom_target(
+test_time = custom_target(
   build_by_default: true,
   command: [cc, c_args, '-o', '@OUTPUT@', '@INPUT@'],
   input: [
@@ -59,7 +62,7 @@ custom_target(
   output: 'test_time.hex',
 )
 
-custom_target(
+test_uart = custom_target(
   build_by_default: true,
   command: [cc, c_args, '-o', '@OUTPUT@', '@INPUT@'],
   input: [
@@ -69,7 +72,7 @@ custom_target(
   output: 'test_uart.hex',
 )
 
-custom_target(
+test_usb = custom_target(
   build_by_default: true,
   command: [cc, c_args, '-o', '@OUTPUT@', '@INPUT@'],
   input: [
@@ -77,4 +80,24 @@ custom_target(
     common,
   ],
   output: 'test_usb.hex',
+)
+
+run_target(
+  'blink',
+  command: [ccflash, test_blink],
+)
+
+run_target(
+  'time',
+  command: [ccflash, test_time],
+)
+
+run_target(
+  'uart',
+  command: [ccflash, test_uart]
+)
+
+run_target(
+  'usb',
+  command: [ccflash, test_usb],
 )
