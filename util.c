@@ -33,13 +33,13 @@ void delay_ms(uint16 milliseconds)
    adapt if necessary, or just tie the pull-up resistor to Vcc */
 void disableUsbPullup()
 {
-    P1DIR &= ~(1<<2);  // Make P1_2 be a floating input.
+    P1DIR &= ~(1<<0);  // Make P1_2 be a floating input.
 }
 
 void enableUsbPullup()
 {
-    P1_2 = 1;
-    P1DIR |= (1<<2);   // Drive P1_2 high.
+    P1_0 = 1;
+    P1DIR |= (1<<0);   // Drive P1_2 high.
 }
 
 uint8 vinPowerPresent()
