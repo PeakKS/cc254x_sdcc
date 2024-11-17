@@ -33,7 +33,6 @@ compiler = generator(
 
 common = compiler.process(
   [
-    'delay.c',
     'time.c',
     'uart.c',
     'usb.c',
