@@ -73,9 +73,9 @@ typedef __bit BIT;
 typedef unsigned char BIT;
 
 #define __sbit
-#define __sfr
-#define __sfr16
-#define __sfr32
+#define __sfr   uint8
+#define __sfr16 uint16
+#define __sfr32 uint32
 #define __xdata
 #define __at(addr)
 #define __interrupt(vector)
