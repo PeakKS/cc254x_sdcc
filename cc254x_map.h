@@ -12,17 +12,9 @@
 #define _CC254X_MAP_H
 
 // Avoid false-alarm syntax errors in Eclipse.
-#if defined(__CDT_PARSER__) || defined(__INTELLISENSE__)
-#define __TEMP__SDCC __SDCC
-#undef __SDCC
+#include <stdbool.h>
+#include "cc254x_types.h"
 #include "mcs51/compiler.h"
-#define __SDCC __TEMP__SDCC
-#elif defined (__SDCC)
-#include "mcs51/compiler.h"
-#else
-#error "Unknown compiler."
-#endif
-#include "stdbool.h"
 
 #define SFRBIT(address, name, bit7, bit6, bit5, bit4, bit3, bit2, bit1, bit0) \
   SFR(name, address);    \

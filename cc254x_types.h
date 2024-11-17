@@ -23,6 +23,8 @@ typedef unsigned long  uint32;
 /** A signed 32-bit integer.  The range of this data type is -2,147,483,648 to 2,147,483,647. **/
 typedef signed   long  int32;
 
+#define CODE_TO_XDATA(addr) ((uint8 XDATA *)addr + 0x8000)
+
 #if defined (__SDCC) && !(defined(__CDT_PARSER__) || defined(__INTELLISENSE__))
 
 /** A 1-bit value that is stored in the processor's bit-addressable memory region.
@@ -64,18 +66,27 @@ typedef __bit BIT;
  */
 #define XDATA __xdata
 
-#define CODE_TO_XDATA(addr) ((uint8 XDATA *)addr + 0x8000)
-
 #elif defined(__CDT_PARSER__) || defined(__INTELLISENSE__)
 
 // Avoid syntax and semantic errors in eclipse.
+
+typedef unsigned char BIT;
+
+#define __sbit
+#define __sfr
+#define __sfr16
+#define __sfr32
+#define __xdata
+#define __at(addr)
+#define __interrupt(vector)
+#define __using(regnum)
+#define __reentrant
+
 #define CODE
-#define XDATA
 #define DATA
 #define PDATA
-typedef unsigned char BIT;
+#define XDATA
 #define ISR(source, bank) void ISR_##source()
-#define __reentrant
 
 #else
 #error "Unknown compiler."
