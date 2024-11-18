@@ -7,7 +7,6 @@ cctool = find_program('cc-tool', '../cc-tool/cc-tool')
 ccflash = [cctool, '-v', '-e', '-w']
 
 c_args = [
-  '-I/usr/share/sdcc/include',
   '--std-sdcc99',
   '-mmcs51',
   '--model-medium',

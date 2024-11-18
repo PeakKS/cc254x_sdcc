@@ -14,7 +14,7 @@
 // Avoid false-alarm syntax errors in Eclipse.
 #include <stdbool.h>
 #include "cc254x_types.h"
-#include "mcs51/compiler.h"
+#include <mcs51/compiler.h>
 
 #define SFRBIT(address, name, bit7, bit6, bit5, bit4, bit3, bit2, bit1, bit0) \
   SFR(name, address);    \
@@ -255,7 +255,8 @@ SFR16E(T1CNT,   0xE3E2);
 
 // XDATA Radio Registers (SWRS055F Table 32)
 
-/* TODO SFRX(SYNC1, 0xDF00);
+/* TODO
+SFRX(SYNC1, 0xDF00);
 SFRX(SYNC0, 0xDF01);
 SFRX(PKTLEN, 0xDF02);
 SFRX(PKTCTRL1, 0xDF03);
