@@ -1,0 +1,1389 @@
+##############################################################################
+#                                                                            #
+#     IAR Universal Librarian V6.6.2.104             18/Nov/2024  13:53:24   #
+#                                                                            #
+#           Command           = list-object-code                             #
+#           Object file       = Z:/home/blake/Code/Biscuit/BLE-CC254x-1.4.2. #
+#                               2-master/Projects/ble/Libraries/Common/bin/C #
+#                               C254x_BLE_HCI_TL_None.lib                    #
+#           List file         = m.txt                                        #
+#                                                                            #
+#                      Copyright 1988-2019 IAR Systems. All rights reserved. #
+##############################################################################
+
+
+    t_beg_lib            REV=0A CPA=05 LAN=10 09/Jun/2016 'hci_tl'
+    t_version            0A 00 06
+    t_aux                0003 [PROMABLE, BANKED]
+    t_aux_1              2000 [x51 v0 m0] '9.10'
+    t_key_value          '__SystemLibrary' 'CLib'
+    t_key_value          '__calling_convention' 'xdata_reentrant'
+    t_key_value          '__code_model' 'banked'
+    t_key_value          '__core' 'plain'
+    t_key_value          '__data_model' 'large'
+    t_key_value          '__dptr_size' '16'
+    t_key_value          '__extended_stack' 'disabled'
+    t_key_value          '__location_for_constants' 'data'
+    t_key_value          '__number_of_dptrs' '1'
+    t_key_value          '__rt_version' '1'
+    t_mem_info           __bit      0, ptr size 0, flags 0, index signed char
+    t_mem_info           __sfr      1, ptr size 0, flags 0, index signed char
+    t_mem_info           __data     2, ptr size 1, flags 0, index signed char
+    t_mem_info           __idata    3, ptr size 1, flags 0, index signed char
+    t_mem_info           __bdata    4, ptr size 1, flags 0, index signed char
+    t_mem_info           __pdata    5, ptr size 1, flags 0, index signed char
+    t_mem_info           __xdata    6, ptr size 2, flags 0, index int
+    t_mem_info           __xdata_rom 7, ptr size 2, flags 0, index int
+    t_mem_info           __ixdata   8, ptr size 2, flags 0, index int
+    t_mem_info           __far      9, ptr size 3, flags 0, index int
+    t_mem_info           __far_rom  10, ptr size 3, flags 0, index int
+    t_mem_info           __huge     11, ptr size 3, flags 0, index long
+    t_mem_info           __huge_rom 12, ptr size 3, flags 0, index long
+    t_mem_info           __generic  13, ptr size 3, flags 0, index int
+    t_mem_info           __code     14, ptr size 2, flags 0, index int
+    t_mem_info           __far_code 15, ptr size 3, flags 0, index int
+    t_mem_info           __huge_code 16, ptr size 3, flags 0, index long
+    t_mem_info           __tiny_func 17, ptr size 2, flags 0, index UNDEFINED
+    t_mem_info           __overlay_tiny_func 18, ptr size 3, flags 0, index UNDEFINED
+    t_mem_info           __near_func 19, ptr size 2, flags 0, index UNDEFINED
+    t_mem_info           __overlay_near_func 20, ptr size 3, flags 0, index UNDEFINED
+    t_mem_info           __banked_func 21, ptr size 2, flags 0, index UNDEFINED
+    t_mem_info           __banked_func_ext2 22, ptr size 3, flags 0, index UNDEFINED
+    t_mem_info           __far_func 23, ptr size 3, flags 0, index UNDEFINED
+    t_mem_info           __far22    24, ptr size 3, flags 0, index int
+    t_mem_info           __far22_rom 25, ptr size 3, flags 0, index int
+    t_mem_info           __far22_code 26, ptr size 3, flags 0, index int
+    t_attr_name          __data_overlay 1, func type
+    t_attr_name          __idata_overlay 2, func type
+    t_attr_name          __idata_reentrant 3, func type
+    t_attr_name          __pdata_reentrant 4, func type
+    t_attr_name          __xdata_reentrant 5, func type
+    t_attr_name          __ext_stack_reentrant 6, func type
+    t_scoped_name        N0000: NAME     '?V0'
+    t_scoped_name        N0001: NAME     '?V1'
+    t_scoped_name        N0002: NAME     '?V2'
+    t_scoped_name        N0003: NAME     '?V3'
+    t_scoped_name        N0004: NAME     'hciInitEventMasks'
+    t_scoped_name        N0005: NAME     '?relay' N0004
+    t_scoped_name        N0006: NAME     'osal_bm_free'
+    t_scoped_name        N0007: NAME     '?relay' N0006
+    t_scoped_name        N0008: NAME     'osal_msg_deallocate'
+    t_scoped_name        N0009: NAME     '?relay' N0008
+    t_scoped_name        N000a: NAME     'osal_msg_receive'
+    t_scoped_name        N000b: NAME     '?relay' N000a
+    t_scoped_name        N000c: NAME     '?BANKED_ENTER_XDATA'
+    t_scoped_name        N000d: NAME     '?BANKED_LEAVE_XDATA'
+    t_scoped_name        N000e: NAME     '?BDISPATCH'
+    t_scoped_name        N000f: NAME     '?BRET'
+    t_scoped_name        N0010: NAME     '__INIT_XDATA_Z'
+    t_scoped_name        N0011: NAME     'uint8'
+    t_scoped_name        N0012: NAME     'hciPTMenabled'
+    t_scoped_name        N0013: NAME     'HCI_ExtTaskRegister'
+    t_scoped_name        N0014: NAME     '?relay' N0013
+    t_scoped_name        N0015: NAME     'HCI_GAPTaskRegister'
+    t_scoped_name        N0016: NAME     '?relay' N0015
+    t_scoped_name        N0017: NAME     'HCI_Init'
+    t_scoped_name        N0018: NAME     '?relay' N0017
+    t_scoped_name        N0019: NAME     'HCI_L2CAPTaskRegister'
+    t_scoped_name        N001a: NAME     '?relay' N0019
+    t_scoped_name        N001b: NAME     'HCI_ProcessEvent'
+    t_scoped_name        N001c: NAME     '?relay' N001b
+    t_scoped_name        N001d: NAME     'HCI_SMPTaskRegister'
+    t_scoped_name        N001e: NAME     '?relay' N001d
+    t_scoped_name        N001f: NAME     'HCI_TestAppTaskRegister'
+    t_scoped_name        N0020: NAME     '?relay' N001f
+    t_scoped_name        N0021: NAME     'uint16'
+    t_scoped_name        N0022: NAME     'opCode'
+    t_scoped_name        N0023: NAME     'hciStatus_t'
+    t_scoped_name        N0024: NAME     'hciFunc_t'
+    t_scoped_name        N0025: NAME     'hciFunc'
+    t_scoped_name        N0026: NAME     'cmdPktTable_t'
+    t_scoped_name        N0027: NAME     'hciCmdTable'
+    t_scoped_name        N0028: NAME     'hciExtTaskID'
+    t_scoped_name        N0029: NAME     'hciGapTaskID'
+    t_scoped_name        N002a: NAME     'hciL2capTaskID'
+    t_scoped_name        N002b: NAME     'hciSmpTaskID'
+    t_scoped_name        N002c: NAME     'hciTaskID'
+    t_scoped_name        N002d: NAME     'hciTestTaskID'
+    t_def_ptr_types      static data      __xdata
+                         auto data        __xdata
+                         const data       __xdata
+                         general data     __xdata
+                         code             __banked_func
+    t_type               [0065] FUNCTION void ANSI
+    t_type               [0064] FUNC_ATTR __banked_func [0065] GEN 0x8[prototy
+                         ped] TGT 04000000
+    t_type               [0067] TYPEDEF unsigned char N0011"uint8"
+    t_type               [0066] DATA_ATTR __xdata [0067] GEN 0x0 TGT 00000000
+    t_type               [006B] DATA_ATTR __xdata void GEN 0x0 TGT 00000000
+    t_type               [006A] POINTER [006B]
+    t_type               [0069] FUNCTION void ANSI
+                           Parameter types:
+                             [006A]
+    t_type               [0068] FUNC_ATTR __banked_func [0069] GEN 0x8[prototy
+                         ped] TGT 04000000
+    t_type               [006F] DATA_ATTR __xdata unsigned char GEN 0x0 TGT 00
+                         000000
+    t_type               [006E] POINTER [006F]
+    t_type               [006D] FUNCTION [0067] ANSI
+                           Parameter types:
+                             [006E]
+    t_type               [006C] FUNC_ATTR __banked_func [006D] GEN 0x8[prototy
+                         ped] TGT 04000000
+    t_type               [0071] FUNCTION [006E] ANSI
+                           Parameter types:
+                             [0067]
+    t_type               [0070] FUNC_ATTR __banked_func [0071] GEN 0x8[prototy
+                         ped] TGT 04000000
+    t_type               [0073] FUNCTION void ANSI
+                           Parameter types:
+                             [0067]
+    t_type               [0072] FUNC_ATTR __banked_func [0073] GEN 0x8[prototy
+                         ped] TGT 04000000
+    t_type               [0076] TYPEDEF unsigned short N0021"uint16"
+    t_type               [0075] FUNCTION [0076] ANSI
+                           Parameter types:
+                             [0067]
+                             [0076]
+    t_type               [0074] FUNC_ATTR __banked_func [0075] GEN 0x8[prototy
+                         ped] TGT 04000000
+    t_type               [0080] TYPEDEF [0067] N0023"hciStatus_t"
+    t_type               [007F] FUNCTION [0080] ANSI
+                           Parameter types:
+                             [006E]
+    t_type               [007E] FUNC_ATTR __banked_func [007F] GEN 0x8[prototy
+                         ped] TGT 04000000
+    t_type               [007D] POINTER [007E]
+    t_type               [007C] TYPEDEF [007D] N0024"hciFunc_t"
+    t_type               [007B] STRUCT_UNION struct, has ebc info, size: 0x4
+                           Elements:
+                             00000000 N0022"opCode" [0076]
+                             00000002 N0025"hciFunc" [007C]
+    t_type               [007A] DATA_ATTR  [007B] GEN 0x1[const] TGT 00000000
+    t_type               [0079] TYPEDEF [007A] N0026"cmdPktTable_t"
+    t_type               [0078] ARRAY1 [0079] 00000004 00000001
+    t_type               [0077] DATA_ATTR __xdata_rom [0078] GEN 0x0 TGT 0000
+                         0000
+    t_size_type          bool 01
+    t_size_type          wchar_t 02
+    t_size_type          signed char 01
+    t_size_type          unsigned char 01
+    t_size_type          short 02
+    t_size_type          unsigned short 02
+    t_size_type          long 04
+    t_size_type          unsigned long 04
+    t_size_type          long long 04
+    t_size_type          unsigned long long 04
+    t_size_type          int 02
+    t_size_type          unsigned int 02
+    t_size_type          char 01 (unsigned)
+    t_size_type          float 04
+    t_size_type          double 04
+    t_size_type          long double 04
+    t_seg                SPA=00 (0006) 23<rel,XDATA> 'XDATA_Z'
+    t_seg                SPA=00 (0007) 23<rel,XDATA> 'XDATA_Z'
+    t_seg                SPA=00 (0008) 23<rel,XDATA> 'XDATA_Z'
+    t_seg                SPA=00 (0009) 23<rel,XDATA> 'XDATA_Z'
+    t_seg                SPA=00 (000A) 23<rel,XDATA> 'XDATA_Z'
+    t_seg                SPA=00 (000B) 23<rel,XDATA> 'XDATA_Z'
+    t_seg                SPA=20:REORDER (000C) 27<rel,CONST> 'XDATA_ROM_C'
+    t_seg                SPA=00 (000D) 21<rel,CODE> 'BANKED_CODE'
+    t_seg                SPA=00 (000F) 21<rel,CODE> 'BANKED_CODE'
+    t_seg                SPA=00 (0011) 21<rel,CODE> 'BANKED_CODE'
+    t_seg                SPA=00 (0013) 21<rel,CODE> 'BANKED_CODE'
+    t_seg                SPA=00 (0015) 21<rel,CODE> 'BANKED_CODE'
+    t_seg                SPA=00 (0017) 21<rel,CODE> 'BANKED_CODE'
+    t_seg                SPA=00 (0018) 21<rel,CODE> 'BANKED_CODE'
+    t_seg                SPA=00 (001A) 21<rel,CODE> 'BANKED_CODE'
+    t_seg                SPA=00 (0001) 24<rel,IDATA> 'ISTACK'
+    t_seg                SPA=00 (0002) 23<rel,XDATA> 'PSTACK'
+    t_seg                SPA=00 (0003) 23<rel,XDATA> 'XSTACK'
+    t_seg                SPA=00 (0004) 24<rel,IDATA> 'IOVERLAY'
+    t_seg                SPA=00 (0005) 22<rel,DATA> 'DOVERLAY'
+    t_seg                SPA=20:REORDER (000E) 21<rel,CODE> 'BANK_RELAYS'
+    t_seg                SPA=20:REORDER (0010) 21<rel,CODE> 'BANK_RELAYS'
+    t_seg                SPA=20:REORDER (0012) 21<rel,CODE> 'BANK_RELAYS'
+    t_seg                SPA=20:REORDER (0014) 21<rel,CODE> 'BANK_RELAYS'
+    t_seg                SPA=20:REORDER (0016) 21<rel,CODE> 'BANK_RELAYS'
+    t_seg                SPA=20:REORDER (0019) 21<rel,CODE> 'BANK_RELAYS'
+    t_seg                SPA=20:REORDER (001B) 21<rel,CODE> 'BANK_RELAYS'
+    t_call_frame_info    extra: 367 bytes NAMES1 
+                         Id = 0, Fmt ver = 1, Def col size = 8
+                         Frame   0: stack based on col 47 seg type IDATA
+                         Frame   1: stack based on col 50 seg type XDATA
+                         Frame   2: stack based on col 53 seg type XDATA
+                         Frame   3: static overlay frame in segment 'IOVERLAY'
+                         Frame   4: static overlay frame in segment 'DOVERLAY'
+                         Virtual: 54 56 57
+                         Column  0: PSW.CY     1 bits
+                         Column  1: B.BR0      1 bits
+                         Column  2: B.BR1      1 bits
+                         Column  3: B.BR2      1 bits
+                         Column  4: B.BR3      1 bits
+                         Column  5: B.BR4      1 bits
+                         Column  6: B.BR5      1 bits
+                         Column  7: B.BR6      1 bits
+                         Column  8: B.BR7      1 bits
+                         Column  9: VB.BR8     1 bits
+                         Column 10: VB.BR9     1 bits
+                         Column 11: VB.BR10    1 bits
+                         Column 12: VB.BR11    1 bits
+                         Column 13: VB.BR12    1 bits
+                         Column 14: VB.BR13    1 bits
+                         Column 15: VB.BR14    1 bits
+                         Column 16: VB.BR15    1 bits
+                         Column 17: VB         8 bits *
+                         Column 18: B          8 bits *
+                         Column 19: A          8 bits *
+                         Column 20: PSW        8 bits *
+                         Column 21: DPL0       8 bits *
+                         Column 22: DPH0       8 bits *
+                         Column 23: R0         8 bits *
+                         Column 24: R1         8 bits *
+                         Column 25: R2         8 bits *
+                         Column 26: R3         8 bits *
+                         Column 27: R4         8 bits *
+                         Column 28: R5         8 bits *
+                         Column 29: R6         8 bits *
+                         Column 30: R7         8 bits *
+                         Column 31: V0         8 bits *
+                         Column 32: V1         8 bits *
+                         Column 33: V2         8 bits *
+                         Column 34: V3         8 bits *
+                         Column 35: V4         8 bits *
+                         Column 36: V5         8 bits *
+                         Column 37: V6         8 bits *
+                         Column 38: V7         8 bits *
+                         Column 39: V8         8 bits *
+                         Column 40: V9         8 bits *
+                         Column 41: V10        8 bits *
+                         Column 42: V11        8 bits *
+                         Column 43: V12        8 bits *
+                         Column 44: V13        8 bits *
+                         Column 45: V14        8 bits *
+                         Column 46: V15        8 bits *
+                         Column 47: SP         8 bits *
+                         Column 48: PSPH       8 bits *
+                         Column 49: PSPL       8 bits *
+                         Column 50: PSP16      16 bits
+                         Column 51: XSPH       8 bits *
+                         Column 52: XSPL       8 bits *
+                         Column 53: XSP16      16 bits
+                         Column 54: ?RET       24 bits
+                         Column 55: ?BRET_EXT  8 bits *
+                         Column 56: ?RET_HIGH  8 bits *
+                         Column 57: ?RET_LOW   8 bits *
+                         PSP16 has part PSPH
+                         PSP16 has part PSPL
+                         XSP16 has part XSPH
+                         XSP16 has part XSPL
+                         ?RET has part ?BRET_EXT
+                         ?RET has part ?RET_HIGH
+                         ?RET has part ?RET_LOW
+    t_call_frame_info    extra: 60 bytes COMMON  ID=0 VER=1 AUG='IAR 2' CAF=1 
+                         DAF=-1 RETADDR=[?RET CODE] FLAGS=[Default-same] NAMES
+                         =0
+                     0x0 def_cfa                      SP -0x3
+                         IAR_def_cfa_i                CFA_PSP16 PSP16 0x0
+                         IAR_def_cfa_i                CFA_XSP16 XSP16 0x0
+                         IAR_def_cfa_i_static_overlay CFA_IOVERLAY
+                         IAR_def_cfa_i_static_overlay CFA_DOVERLAY
+                         undefined                    B
+                         undefined                    A
+                         undefined                    R0
+                         undefined                    R1
+                         undefined                    R2
+                         undefined                    R3
+                         undefined                    R4
+                         undefined                    R5
+                         undefined                    PSPH
+                         undefined                    PSPL
+                         undefined                    XSPH
+                         undefined                    XSPL
+                         offset                       ?BRET_EXT 0x3
+                         offset                       ?RET_HIGH 0x2
+                         offset                       ?RET_LOW 0x1
+    t_symbol_def2        EXTERNAL   <0000> 00000000 N0000"?V0" UNDEFINED
+    t_symbol_def2        EXTERNAL   <0001> 00000000 N0001"?V1" UNDEFINED
+    t_symbol_def2        EXTERNAL   <0002> 00000000 N0002"?V2" UNDEFINED
+    t_symbol_def2        EXTERNAL   <0003> 00000000 N0003"?V3" UNDEFINED
+    t_symbol_def2        EXTERNAL   <0004> 00000000 N0005"hciInitEventMasks::?
+                         relay" UNDEFINED
+    t_sub_def_xfunc      F-INDEX = 000E FDEF 00000000
+    t_count              00000000
+    t_symbol_def2        EXTERNAL   <0005> 00000000 N0007"osal_bm_free::?relay
+                         " UNDEFINED
+    t_sub_def_xfunc      F-INDEX = 000F FDEF 00000000
+    t_count              00000000
+    t_symbol_def2        EXTERNAL   <0006> 00000000 N0009"osal_msg_deallocate:
+                         :?relay" UNDEFINED
+    t_sub_def_xfunc      F-INDEX = 0010 FDEF 00000000
+    t_count              00000000
+    t_symbol_def2        EXTERNAL   <0007> 00000000 N000b"osal_msg_receive::?r
+                         elay" UNDEFINED
+    t_sub_def_xfunc      F-INDEX = 0011 FDEF 00000000
+    t_count              00000000
+    t_symbol_def2        EXTERNAL   <0008> 00000000 N000c"?BANKED_ENTER_XDATA"
+                          UNDEFINED
+    t_symbol_def2        EXTERNAL   <0009> 00000000 N000d"?BANKED_LEAVE_XDATA"
+                          UNDEFINED
+    t_symbol_def2        EXTERNAL   <000A> 00000000 N000e"?BDISPATCH" UNDEFINE
+                         D
+    t_symbol_def2        EXTERNAL   <000B> 00000000 N000f"?BRET" UNDEFINED
+    t_symbol_def2        EXTERNAL   <000C> 00000000 N0010"__INIT_XDATA_Z" UNDE
+                         FINED
+    t_symbol_def2        EXTERNAL   <000D> 00000000 N0004"hciInitEventMasks" 
+                         [0064]
+    t_sub_def_xfunc      F-INDEX = 0012 FDEF 00000202
+    t_count              00000005
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0002 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0003 SIZE = 00000009 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0004 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_sub_def_frame_size SNO = 0005 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_symbol_def2        EXTERNAL   <000E> 00000000 N0012"hciPTMenabled" 
+                         [0066]
+    t_symbol_def2        EXTERNAL   <000F> 00000000 N0006"osal_bm_free" [0068]
+    t_sub_def_xfunc      F-INDEX = 0013 FDEF 00000202
+    t_count              00000005
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0002 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0003 SIZE = 0000000C FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0004 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_sub_def_frame_size SNO = 0005 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_symbol_def2        EXTERNAL   <0010> 00000000 N0008"osal_msg_deallocate"
+                          [006C]
+    t_sub_def_xfunc      F-INDEX = 0014 FDEF 00000202
+    t_count              00000005
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0002 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0003 SIZE = 0000000C FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0004 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_sub_def_frame_size SNO = 0005 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_symbol_def2        EXTERNAL   <0011> 00000000 N000a"osal_msg_receive" 
+                         [0070]
+    t_sub_def_xfunc      F-INDEX = 0015 FDEF 00000202
+    t_count              00000005
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0002 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0003 SIZE = 0000000C FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0004 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_sub_def_frame_size SNO = 0005 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_symbol_def2        PUBLIC_REL (001B) 00000000 N0014"HCI_ExtTaskRegister:
+                         :?relay" UNDEFINED
+    t_sub_def_func       F-INDEX = 000D FILE FFFF LINE 0000 FDEF 00000203
+    t_count              00000000
+    t_count              00000000
+    t_symbol_def2        PUBLIC_REL (0014) 00000000 N0016"HCI_GAPTaskRegister:
+                         :?relay" UNDEFINED
+    t_sub_def_func       F-INDEX = 000A FILE FFFF LINE 0000 FDEF 00000203
+    t_count              00000000
+    t_count              00000000
+    t_symbol_def2        PUBLIC_REL (000E) 00000000 N0018"HCI_Init::?relay" UN
+                         DEFINED
+    t_sub_def_func       F-INDEX = 0007 FILE FFFF LINE 0000 FDEF 00000203
+    t_count              00000000
+    t_count              00000000
+    t_symbol_def2        PUBLIC_REL (0016) 00000000 N001a"HCI_L2CAPTaskRegiste
+                         r::?relay" UNDEFINED
+    t_sub_def_func       F-INDEX = 000B FILE FFFF LINE 0000 FDEF 00000203
+    t_count              00000000
+    t_count              00000000
+    t_symbol_def2        PUBLIC_REL (0010) 00000000 N001c"HCI_ProcessEvent::?r
+                         elay" UNDEFINED
+    t_sub_def_func       F-INDEX = 0008 FILE FFFF LINE 0000 FDEF 00000203
+    t_count              00000000
+    t_count              00000000
+    t_symbol_def2        PUBLIC_REL (0019) 00000000 N001e"HCI_SMPTaskRegister:
+                         :?relay" UNDEFINED
+    t_sub_def_func       F-INDEX = 000C FILE FFFF LINE 0000 FDEF 00000203
+    t_count              00000000
+    t_count              00000000
+    t_symbol_def2        PUBLIC_REL (0012) 00000000 N0020"HCI_TestAppTaskRegis
+                         ter::?relay" UNDEFINED
+    t_sub_def_func       F-INDEX = 0009 FILE FFFF LINE 0000 FDEF 00000203
+    t_count              00000000
+    t_count              00000000
+    t_symbol_def2        PUBLIC_REL (001A) 00000000 N0013"HCI_ExtTaskRegister"
+                          [0072]
+    t_sub_def_func       F-INDEX = 0006 FILE FFFF LINE 0238 FDEF 00000203
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0003 SIZE = 00000000 FLAGS =[Args]
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000002 FLAGS =[]
+    t_symbol_def2        PUBLIC_REL (0013) 00000000 N0015"HCI_GAPTaskRegister"
+                          [0072]
+    t_sub_def_func       F-INDEX = 0003 FILE FFFF LINE 0217 FDEF 00000203
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0003 SIZE = 00000000 FLAGS =[Args]
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000002 FLAGS =[]
+    t_symbol_def2        PUBLIC_REL (000D) 00000000 N0017"HCI_Init" [0072]
+    t_sub_def_func       F-INDEX = 0000 FILE FFFF LINE 01B1 FDEF 00021203
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0003 SIZE = 00000000 FLAGS =[Args]
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0003 SIZE = 00000009 FLAGS =[]
+    t_symbol_def2        PUBLIC_REL (0015) 00000000 N0019"HCI_L2CAPTaskRegiste
+                         r" [0072]
+    t_sub_def_func       F-INDEX = 0004 FILE FFFF LINE 0222 FDEF 00000203
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0003 SIZE = 00000000 FLAGS =[Args]
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000002 FLAGS =[]
+    t_symbol_def2        PUBLIC_REL (000F) 00000000 N001b"HCI_ProcessEvent" 
+                         [0074]
+    t_sub_def_func       F-INDEX = 0001 FILE FFFF LINE 01D2 FDEF 000A1203
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0003 SIZE = 00000000 FLAGS =[Args]
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0003 SIZE = 0000000C FLAGS =[]
+    t_symbol_def2        PUBLIC_REL (0018) 00000000 N001d"HCI_SMPTaskRegister"
+                          [0072]
+    t_sub_def_func       F-INDEX = 0005 FILE FFFF LINE 022D FDEF 00000203
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0003 SIZE = 00000000 FLAGS =[Args]
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000002 FLAGS =[]
+    t_symbol_def2        PUBLIC_REL (0011) 00000000 N001f"HCI_TestAppTaskRegis
+                         ter" [0072]
+    t_sub_def_func       F-INDEX = 0002 FILE FFFF LINE 020C FDEF 00000203
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0003 SIZE = 00000000 FLAGS =[Args]
+    t_count              00000001
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000002 FLAGS =[]
+    t_symbol_def2        PUBLIC_REL (000C) 00000000 N0027"hciCmdTable" [0077]
+    t_symbol_def2        PUBLIC_REL (000B) 00000000 N0028"hciExtTaskID" [0066]
+    t_symbol_def2        PUBLIC_REL (0008) 00000000 N0029"hciGapTaskID" [0066]
+    t_symbol_def2        PUBLIC_REL (0009) 00000000 N002a"hciL2capTaskID" 
+                         [0066]
+    t_symbol_def2        PUBLIC_REL (000A) 00000000 N002b"hciSmpTaskID" [0066]
+    t_symbol_def2        PUBLIC_REL (0006) 00000000 N002c"hciTaskID" [0066]
+    t_symbol_def2        PUBLIC_REL (0007) 00000000 N002d"hciTestTaskID" 
+                         [0066]
+    t_org_rel1           (0006) 00000000
+    t_asm_mode_change    DATA8(10)
+    t_org_rel1           (0006) 00000001
+    t_push_ext           <000C> 00000000
+    t_delete_tos        
+    t_org_rel1           (0007) 00000000
+    t_asm_mode_change    DATA8(10)
+    t_org_rel1           (0007) 00000001
+    t_push_ext           <000C> 00000000
+    t_delete_tos        
+    t_org_rel1           (0008) 00000000
+    t_asm_mode_change    DATA8(10)
+    t_org_rel1           (0008) 00000001
+    t_push_ext           <000C> 00000000
+    t_delete_tos        
+    t_org_rel1           (0009) 00000000
+    t_asm_mode_change    DATA8(10)
+    t_org_rel1           (0009) 00000001
+    t_push_ext           <000C> 00000000
+    t_delete_tos        
+    t_org_rel1           (000A) 00000000
+    t_asm_mode_change    DATA8(10)
+    t_org_rel1           (000A) 00000001
+    t_push_ext           <000C> 00000000
+    t_delete_tos        
+    t_org_rel1           (000B) 00000000
+    t_asm_mode_change    DATA8(10)
+    t_org_rel1           (000B) 00000001
+    t_push_ext           <000C> 00000000
+    t_delete_tos        
+    t_org_rel1           (000C) 00000000
+    t_asm_mode_change    DATA32(12)
+    t_asm_mode_change    DATA16(11)
+    t_abs_16             FFFF
+    t_abs_16             0000
+    t_org_rel1           (000D) 00000000
+    t_call_frame_info    extra: 112 bytes DATA  COMMON=0 TOT=0x2c FUNC= N0017"
+                         HCI_Init"
+                   0x0 advance_loc            0x5
+                   0x5 def_cfa_offset         0x0
+                       IAR_def_cfa_expression CFA_XSP16
+                          0x00: bregx 0x35, 9 (0x9)
+                            XSP16 + 9
+                       IAR_expression         VB
+                          0x00: IAR_frame 0x2
+                          0x02: consts -8 (0xfffffff8)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -8, 1, XDATA)
+                       IAR_expression         DPL0
+                          0x00: IAR_frame 0x2
+                          0x02: consts -2 (0xfffffffe)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -2, 1, XDATA)
+                       IAR_expression         DPH0
+                          0x00: IAR_frame 0x2
+                          0x02: consts -1 (0xffffffff)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -1, 1, XDATA)
+                       IAR_expression         R6
+                          0x00: IAR_frame 0x2
+                          0x02: consts -9 (0xfffffff7)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -9, 1, XDATA)
+                       IAR_expression         R7
+                          0x00: IAR_frame 0x2
+                          0x02: consts -6 (0xfffffffa)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -6, 1, XDATA)
+                       IAR_expression         V0
+                          0x00: IAR_frame 0x2
+                          0x02: consts -7 (0xfffffff9)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -7, 1, XDATA)
+                       IAR_expression         ?BRET_EXT
+                          0x00: IAR_frame 0x2
+                          0x02: consts -3 (0xfffffffd)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -3, 1, XDATA)
+                       IAR_expression         ?RET_HIGH
+                          0x00: IAR_frame 0x2
+                          0x02: consts -4 (0xfffffffc)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -4, 1, XDATA)
+                       IAR_expression         ?RET_LOW
+                          0x00: IAR_frame 0x2
+                          0x02: consts -5 (0xfffffffb)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -5, 1, XDATA)
+    t_asm_mode_change    CODE1(1)
+    t_src_call           CALLER = 0000 CALLEE = 0012 FLAGS = 0000
+    t_count              00000005
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000000 FLAGS =[]
+    t_sub_def_frame_size SNO = 0002 SIZE = 00000000 FLAGS =[]
+    t_sub_def_frame_size SNO = 0003 SIZE = 00000009 FLAGS =[]
+    t_sub_def_frame_size SNO = 0004 SIZE = 00000000 FLAGS =[Static overlay]
+    t_sub_def_frame_size SNO = 0005 SIZE = 00000000 FLAGS =[Static overlay]
+    t_count              00000005
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0002 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0003 SIZE = 00000009 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0004 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_sub_def_frame_size SNO = 0005 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_abs_8              74
+    t_abs_8              F7
+    t_abs_8              12
+    t_push_ext           <0008> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 434 
+ Source: LCALL   ?BANKED_ENTER_XDATA'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              E9
+    t_abs_8              90
+    t_push_rel           (0006) 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 444 
+ Source: MOV     DPTR,#hciTaskID'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              F0
+    t_abs_8              90
+    t_push_rel           (0007) 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 445 
+ Source: MOV     DPTR,#hciTestTaskID'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              E4
+    t_abs_8              F0
+    t_abs_8              90
+    t_push_rel           (0008) 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 446 
+ Source: MOV     DPTR,#hciGapTaskID'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              F0
+    t_abs_8              90
+    t_push_rel           (0009) 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 447 
+ Source: MOV     DPTR,#hciL2capTaskID'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              F0
+    t_abs_8              90
+    t_push_rel           (000A) 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 448 
+ Source: MOV     DPTR,#hciSmpTaskID'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              F0
+    t_abs_8              90
+    t_push_rel           (000B) 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 449 
+ Source: MOV     DPTR,#hciExtTaskID'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              F0
+    t_abs_8              12
+    t_push_ext           <0004> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 452 
+ Source: LCALL   ??hciInitEventMasks?relay; Banked call to: hciInitEventMasks'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              90
+    t_push_ext           <000E> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 455 
+ Source: MOV     DPTR,#hciPTMenabled'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              E4
+    t_abs_8              F0
+    t_abs_8              7F
+    t_abs_8              01
+    t_abs_8              02
+    t_push_ext           <0009> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 457 
+ Source: LJMP    ?BANKED_LEAVE_XDATA'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_org_rel1           (000F) 00000000
+    t_call_frame_info    extra: 145 bytes DATA  COMMON=0 TOT=0x5b FUNC= N001b"
+                         HCI_ProcessEvent"
+                   0x0 advance_loc            0x5
+                   0x5 def_cfa_offset         0x0
+                       IAR_def_cfa_expression CFA_XSP16
+                          0x00: bregx 0x35, 12 (0xc)
+                            XSP16 + 12
+                       IAR_expression         VB
+                          0x00: IAR_frame 0x2
+                          0x02: consts -11 (0xfffffff5)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -11, 1, XDATA)
+                       IAR_expression         DPL0
+                          0x00: IAR_frame 0x2
+                          0x02: consts -2 (0xfffffffe)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -2, 1, XDATA)
+                       IAR_expression         DPH0
+                          0x00: IAR_frame 0x2
+                          0x02: consts -1 (0xffffffff)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -1, 1, XDATA)
+                       IAR_expression         R6
+                          0x00: IAR_frame 0x2
+                          0x02: consts -12 (0xfffffff4)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -12, 1, XDATA)
+                       IAR_expression         R7
+                          0x00: IAR_frame 0x2
+                          0x02: consts -6 (0xfffffffa)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -6, 1, XDATA)
+                       IAR_expression         V0
+                          0x00: IAR_frame 0x2
+                          0x02: consts -10 (0xfffffff6)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -10, 1, XDATA)
+                       IAR_expression         V1
+                          0x00: IAR_frame 0x2
+                          0x02: consts -9 (0xfffffff7)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -9, 1, XDATA)
+                       IAR_expression         V2
+                          0x00: IAR_frame 0x2
+                          0x02: consts -8 (0xfffffff8)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -8, 1, XDATA)
+                       IAR_expression         V3
+                          0x00: IAR_frame 0x2
+                          0x02: consts -7 (0xfffffff9)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -7, 1, XDATA)
+                       IAR_expression         ?BRET_EXT
+                          0x00: IAR_frame 0x2
+                          0x02: consts -3 (0xfffffffd)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -3, 1, XDATA)
+                       IAR_expression         ?RET_HIGH
+                          0x00: IAR_frame 0x2
+                          0x02: consts -4 (0xfffffffc)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -4, 1, XDATA)
+                       IAR_expression         ?RET_LOW
+                          0x00: IAR_frame 0x2
+                          0x02: consts -5 (0xfffffffb)
+                          0x04: plus
+                          0x05: xderef_size 0x1, XDATA
+                            Load(CFA_XSP16 + -5, 1, XDATA)
+    t_asm_mode_change    CODE1(1)
+    t_src_call           CALLER = 0001 CALLEE = 0015 FLAGS = 0000
+    t_count              00000005
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000000 FLAGS =[]
+    t_sub_def_frame_size SNO = 0002 SIZE = 00000000 FLAGS =[]
+    t_sub_def_frame_size SNO = 0003 SIZE = 0000000C FLAGS =[]
+    t_sub_def_frame_size SNO = 0004 SIZE = 00000000 FLAGS =[Static overlay]
+    t_sub_def_frame_size SNO = 0005 SIZE = 00000000 FLAGS =[Static overlay]
+    t_count              00000005
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0002 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0003 SIZE = 0000000C FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0004 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_sub_def_frame_size SNO = 0005 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_src_call           CALLER = 0001 CALLEE = 0013 FLAGS = 0000
+    t_count              00000005
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000000 FLAGS =[]
+    t_sub_def_frame_size SNO = 0002 SIZE = 00000000 FLAGS =[]
+    t_sub_def_frame_size SNO = 0003 SIZE = 0000000C FLAGS =[]
+    t_sub_def_frame_size SNO = 0004 SIZE = 00000000 FLAGS =[Static overlay]
+    t_sub_def_frame_size SNO = 0005 SIZE = 00000000 FLAGS =[Static overlay]
+    t_count              00000005
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0002 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0003 SIZE = 0000000C FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0004 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_sub_def_frame_size SNO = 0005 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_src_call           CALLER = 0001 CALLEE = 0014 FLAGS = 0000
+    t_count              00000005
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000000 FLAGS =[]
+    t_sub_def_frame_size SNO = 0002 SIZE = 00000000 FLAGS =[]
+    t_sub_def_frame_size SNO = 0003 SIZE = 0000000C FLAGS =[]
+    t_sub_def_frame_size SNO = 0004 SIZE = 00000000 FLAGS =[Static overlay]
+    t_sub_def_frame_size SNO = 0005 SIZE = 00000000 FLAGS =[Static overlay]
+    t_count              00000005
+    t_sub_def_frame_size SNO = 0001 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0002 SIZE = 00000000 FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0003 SIZE = 0000000C FLAGS =[Args]
+    t_sub_def_frame_size SNO = 0004 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_sub_def_frame_size SNO = 0005 SIZE = 00000000 FLAGS =[Args, Static overl
+                         ay]
+    t_push_ext           <0000> 00000000
+    t_delete_tos        
+    t_push_ext           <0001> 00000000
+    t_delete_tos        
+    t_push_ext           <0002> 00000000
+    t_delete_tos        
+    t_push_ext           <0003> 00000000
+    t_delete_tos        
+    t_abs_8              74
+    t_abs_8              F4
+    t_abs_8              12
+    t_push_ext           <0008> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 467 
+ Source: LCALL   ?BANKED_ENTER_XDATA'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              8A
+    t_push_ext           <0000> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 467 
+ Source: MOV     ?V0,R2'
+    t_check              00000000 000000FF
+    t_stack_error       
+    t_pop_8             
+    t_abs_8              8B
+    t_push_ext           <0001> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 467 
+ Source: MOV     ?V1,R3'
+    t_check              00000000 000000FF
+    t_stack_error       
+    t_pop_8             
+    t_abs_8              EB
+    t_abs_8              54
+    t_abs_8              80
+    t_abs_8              60
+    t_abs_8              44
+    t_abs_8              90
+    t_push_rel           (0006) 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 473 
+ Source: MOV     DPTR,#hciTaskID'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              E0
+    t_abs_8              F9
+    t_abs_8              12
+    t_push_ext           <0007> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 473 
+ Source: LCALL   ??osal_msg_receive?relay; Banked call to: osal_msg_receive'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              8A
+    t_push_ext           <0002> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 473 
+ Source: MOV     ?V2,R2'
+    t_check              00000000 000000FF
+    t_stack_error       
+    t_pop_8             
+    t_abs_8              8B
+    t_push_ext           <0003> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 473 
+ Source: MOV     ?V3,R3'
+    t_check              00000000 000000FF
+    t_stack_error       
+    t_pop_8             
+    t_abs_8              AE
+    t_push_ext           <0002> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 473 
+ Source: MOV     R6,?V2'
+    t_check              00000000 000000FF
+    t_stack_error       
+    t_pop_8             
+    t_abs_8              AF
+    t_push_ext           <0003> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 473 
+ Source: MOV     R7,?V3'
+    t_check              00000000 000000FF
+    t_stack_error       
+    t_pop_8             
+    t_abs_8              EE
+    t_abs_8              4F
+    t_abs_8              60
+    t_abs_8              27
+    t_abs_8              8E
+    t_abs_8              82
+    t_abs_8              8F
+    t_abs_8              83
+    t_abs_8              E0
+    t_abs_8              F8
+    t_abs_8              74
+    t_abs_8              03
+    t_abs_8              68
+    t_abs_8              60
+    t_abs_8              05
+    t_abs_8              74
+    t_abs_8              01
+    t_abs_8              68
+    t_abs_8              70
+    t_abs_8              10
+    t_abs_8              A3
+    t_abs_8              A3
+    t_abs_8              A3
+    t_abs_8              A3
+    t_abs_8              A3
+    t_abs_8              A3
+    t_abs_8              A3
+    t_abs_8              A3
+    t_abs_8              E0
+    t_abs_8              FA
+    t_abs_8              A3
+    t_abs_8              E0
+    t_abs_8              FB
+    t_abs_8              12
+    t_push_ext           <0005> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 500 
+ Source: LCALL   ??osal_bm_free?relay ; Banked call to: osal_bm_free'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              EE
+    t_abs_8              FA
+    t_abs_8              EF
+    t_abs_8              FB
+    t_abs_8              12
+    t_push_ext           <0006> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 504 
+ Source: LCALL   ??osal_msg_deallocate?relay; Banked call to: osal_msg_dealloc
+                         ate'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              AA
+    t_push_ext           <0000> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 509 
+ Source: MOV     R2,?V0'
+    t_check              00000000 000000FF
+    t_stack_error       
+    t_pop_8             
+    t_abs_8              E5
+    t_push_ext           <0001> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 509 
+ Source: MOV     A,?V1'
+    t_check              00000000 000000FF
+    t_stack_error       
+    t_pop_8             
+    t_abs_8              64
+    t_abs_8              80
+    t_abs_8              FB
+    t_abs_8              80
+    t_abs_8              04
+    t_abs_8              7A
+    t_abs_8              00
+    t_abs_8              7B
+    t_abs_8              00
+    t_abs_8              7F
+    t_abs_8              04
+    t_abs_8              02
+    t_push_ext           <0009> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 512 
+ Source: LJMP    ?BANKED_LEAVE_XDATA'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_org_rel1           (0011) 00000000
+    t_call_frame_info    extra: 14 bytes DATA  COMMON=0 TOT=0xa FUNC= N001f"HC
+                         I_TestAppTaskRegister"
+                   0x0 advance_loc    0x2
+                   0x2 def_cfa_offset -0x4
+                       offset         DPL0 0x4
+                       advance_loc    0x2
+                   0x4 def_cfa_offset -0x5
+                       offset         DPH0 0x5
+    t_asm_mode_change    CODE1(1)
+    t_abs_8              C0
+    t_abs_8              82
+    t_abs_8              C0
+    t_abs_8              83
+    t_abs_8              E9
+    t_abs_8              90
+    t_push_rel           (0007) 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 526 
+ Source: MOV     DPTR,#hciTestTaskID'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              80
+    t_push_rel           (0017) 00000000
+    t_push_pcr           00000000
+    t_minus             
+    t_push_abs           00000001
+    t_minus             
+    t_stack_error        '
+ Branch displacement > 8 bits
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 526 
+ Source: SJMP    ?Subroutine0'
+    t_check              FFFFFF80 0000007F
+    t_stack_error       
+    t_pop_8             
+    t_org_rel1           (0013) 00000000
+    t_call_frame_info    extra: 14 bytes DATA  COMMON=0 TOT=0xa FUNC= N0015"HC
+                         I_GAPTaskRegister"
+                   0x0 advance_loc    0x2
+                   0x2 def_cfa_offset -0x4
+                       offset         DPL0 0x4
+                       advance_loc    0x2
+                   0x4 def_cfa_offset -0x5
+                       offset         DPH0 0x5
+    t_asm_mode_change    CODE1(1)
+    t_abs_8              C0
+    t_abs_8              82
+    t_abs_8              C0
+    t_abs_8              83
+    t_abs_8              E9
+    t_abs_8              90
+    t_push_rel           (0008) 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 537 
+ Source: MOV     DPTR,#hciGapTaskID'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              80
+    t_push_rel           (0017) 00000000
+    t_push_pcr           00000000
+    t_minus             
+    t_push_abs           00000001
+    t_minus             
+    t_stack_error        '
+ Branch displacement > 8 bits
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 537 
+ Source: SJMP    ?Subroutine0'
+    t_check              FFFFFF80 0000007F
+    t_stack_error       
+    t_pop_8             
+    t_org_rel1           (0015) 00000000
+    t_call_frame_info    extra: 14 bytes DATA  COMMON=0 TOT=0x8 FUNC= N0019"HC
+                         I_L2CAPTaskRegister"
+                   0x0 advance_loc    0x2
+                   0x2 def_cfa_offset -0x4
+                       offset         DPL0 0x4
+                       advance_loc    0x2
+                   0x4 def_cfa_offset -0x5
+                       offset         DPH0 0x5
+    t_asm_mode_change    CODE1(1)
+    t_abs_8              C0
+    t_abs_8              82
+    t_abs_8              C0
+    t_abs_8              83
+    t_abs_8              E9
+    t_abs_8              90
+    t_push_rel           (0009) 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 548 
+ Source: MOV     DPTR,#hciL2capTaskID'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_push_rel           (0017) 00000000
+    t_delete_tos        
+    t_org_rel1           (0017) 00000000
+    t_call_frame_info    extra: 18 bytes DATA  COMMON=0 TOT=0x8
+                   0x0 def_cfa_offset -0x5
+                       offset         DPL0 0x4
+                       offset         DPH0 0x5
+                       advance_loc    0x3
+                   0x3 def_cfa_offset -0x4
+                       restore        DPH0
+                       advance_loc    0x2
+                   0x5 def_cfa_offset -0x3
+                       restore        DPL0
+    t_abs_8              F0
+    t_abs_8              D0
+    t_abs_8              83
+    t_abs_8              D0
+    t_abs_8              82
+    t_abs_8              02
+    t_push_ext           <000B> 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 571 
+ Source: LJMP    ?BRET'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_org_rel1           (0018) 00000000
+    t_call_frame_info    extra: 14 bytes DATA  COMMON=0 TOT=0xa FUNC= N001d"HC
+                         I_SMPTaskRegister"
+                   0x0 advance_loc    0x2
+                   0x2 def_cfa_offset -0x4
+                       offset         DPL0 0x4
+                       advance_loc    0x2
+                   0x4 def_cfa_offset -0x5
+                       offset         DPH0 0x5
+    t_asm_mode_change    CODE1(1)
+    t_abs_8              C0
+    t_abs_8              82
+    t_abs_8              C0
+    t_abs_8              83
+    t_abs_8              E9
+    t_abs_8              90
+    t_push_rel           (000A) 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 559 
+ Source: MOV     DPTR,#hciSmpTaskID'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              80
+    t_push_rel           (0017) 00000000
+    t_push_pcr           00000000
+    t_minus             
+    t_push_abs           00000001
+    t_minus             
+    t_stack_error        '
+ Branch displacement > 8 bits
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 559 
+ Source: SJMP    ?Subroutine0'
+    t_check              FFFFFF80 0000007F
+    t_stack_error       
+    t_pop_8             
+    t_org_rel1           (001A) 00000000
+    t_call_frame_info    extra: 14 bytes DATA  COMMON=0 TOT=0xa FUNC= N0013"HC
+                         I_ExtTaskRegister"
+                   0x0 advance_loc    0x2
+                   0x2 def_cfa_offset -0x4
+                       offset         DPL0 0x4
+                       advance_loc    0x2
+                   0x4 def_cfa_offset -0x5
+                       offset         DPH0 0x5
+    t_asm_mode_change    CODE1(1)
+    t_abs_8              C0
+    t_abs_8              82
+    t_abs_8              C0
+    t_abs_8              83
+    t_abs_8              E9
+    t_abs_8              90
+    t_push_rel           (000B) 00000000
+    t_stack_error        '
+ Number out of range
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 570 
+ Source: MOV     DPTR,#hciExtTaskID'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_abs_8              80
+    t_push_rel           (0017) 00000000
+    t_push_pcr           00000000
+    t_minus             
+    t_push_abs           00000001
+    t_minus             
+    t_stack_error        '
+ Branch displacement > 8 bits
+ File: C:\Build\BLE\ble_cc254x\Components\ble\hci\hci_tl.c, Line: 570 
+ Source: SJMP    ?Subroutine0'
+    t_check              FFFFFF80 0000007F
+    t_stack_error       
+    t_pop_8             
+    t_org_rel1           (0001) 00000000
+    t_org_rel1           (0002) 00000000
+    t_org_rel1           (0003) 00000000
+    t_org_rel1           (0004) 00000000
+    t_org_rel1           (0005) 00000000
+    t_org_rel1           (000E) 00000000
+    t_asm_mode_change    CODE1(1)
+    t_abs_8              12
+    t_push_ext           <000A> 00000000
+    t_stack_error        '
+ Number out of range
+ Source: LCALL   ?BDISPATCH'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_asm_mode_change    DATA24(14)
+    t_push_rel           (000D) 00000000
+    t_pop_24            
+    t_org_rel1           (0010) 00000000
+    t_asm_mode_change    CODE1(1)
+    t_abs_8              12
+    t_push_ext           <000A> 00000000
+    t_stack_error        '
+ Number out of range
+ Source: LCALL   ?BDISPATCH'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_asm_mode_change    DATA24(14)
+    t_push_rel           (000F) 00000000
+    t_pop_24            
+    t_org_rel1           (0012) 00000000
+    t_asm_mode_change    CODE1(1)
+    t_abs_8              12
+    t_push_ext           <000A> 00000000
+    t_stack_error        '
+ Number out of range
+ Source: LCALL   ?BDISPATCH'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_asm_mode_change    DATA24(14)
+    t_push_rel           (0011) 00000000
+    t_pop_24            
+    t_org_rel1           (0014) 00000000
+    t_asm_mode_change    CODE1(1)
+    t_abs_8              12
+    t_push_ext           <000A> 00000000
+    t_stack_error        '
+ Number out of range
+ Source: LCALL   ?BDISPATCH'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_asm_mode_change    DATA24(14)
+    t_push_rel           (0013) 00000000
+    t_pop_24            
+    t_org_rel1           (0016) 00000000
+    t_asm_mode_change    CODE1(1)
+    t_abs_8              12
+    t_push_ext           <000A> 00000000
+    t_stack_error        '
+ Number out of range
+ Source: LCALL   ?BDISPATCH'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_asm_mode_change    DATA24(14)
+    t_push_rel           (0015) 00000000
+    t_pop_24            
+    t_org_rel1           (0019) 00000000
+    t_asm_mode_change    CODE1(1)
+    t_abs_8              12
+    t_push_ext           <000A> 00000000
+    t_stack_error        '
+ Number out of range
+ Source: LCALL   ?BDISPATCH'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_asm_mode_change    DATA24(14)
+    t_push_rel           (0018) 00000000
+    t_pop_24            
+    t_org_rel1           (001B) 00000000
+    t_asm_mode_change    CODE1(1)
+    t_abs_8              12
+    t_push_ext           <000A> 00000000
+    t_stack_error        '
+ Number out of range
+ Source: LCALL   ?BDISPATCH'
+    t_check              FFFF8000 0000FFFF
+    t_stack_error       
+    t_copy              
+    t_lsr                00000008
+    t_pop_8             
+    t_pop_8             
+    t_asm_mode_change    DATA24(14)
+    t_push_rel           (001A) 00000000
+    t_pop_24            
+    t_end                CRC=C906
