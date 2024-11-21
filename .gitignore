@@ -1,3 +1,7 @@
+.vscode
+reverse/iarlib/__pycache__
+reverse/*.hexproj
+
 *.asm
 *.hex
 *.lst

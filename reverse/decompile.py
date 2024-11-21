@@ -26,6 +26,12 @@ from iarlib.pointertype import PointerType
 section_type[PointerType.ID()] = PointerType
 from iarlib.type import Type
 section_type[Type.ID()] = Type
+from iarlib.sizetype import SizeType
+section_type[SizeType.ID()] = SizeType
+from iarlib.segment import Segment
+section_type[Segment.ID()] = Segment
+from iarlib.callframe import CallFrame
+section_type[CallFrame.ID()] = CallFrame
 
 try:
     options, values = getopt.getopt(sys.argv[1:], "ho:v", ["help", "output="])

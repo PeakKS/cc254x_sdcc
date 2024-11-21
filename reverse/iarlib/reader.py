@@ -1,4 +1,4 @@
-import sys
+import os
 from io import BytesIO
 
 class Reader:
@@ -9,8 +9,16 @@ class Reader:
     def valid(self) -> bool:
         return self.data.readable()
     
+    def position(self) -> int:
+        return self.data.tell()
+    
     def readU8(self) -> int:
         return int.from_bytes(self.data.read(1))
+    
+    def peekU8(self, offset) -> int:
+        ret = int.from_bytes(self.data.read(1 + offset)[-1:])
+        self.data.seek(-1 - offset, os.SEEK_CUR)
+        return ret
     
     def readU16(self) -> int:
         return int.from_bytes(self.data.read(2))
