@@ -32,6 +32,8 @@ from iarlib.segment import Segment
 section_type[Segment.ID()] = Segment
 from iarlib.callframe import CallFrame
 section_type[CallFrame.ID()] = CallFrame
+from iarlib.symbol import Symbol
+section_type[Symbol.ID()] = Symbol
 
 try:
     options, values = getopt.getopt(sys.argv[1:], "ho:v", ["help", "output="])

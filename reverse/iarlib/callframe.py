@@ -50,7 +50,6 @@ class Names1:
         self.columns = []
         for _ in range(column_count):
             column = data.readString()
-            print(column)
             has_bits = data.peekU8(1) < 0x20
             if has_bits:
                 self.columns.append((column, data.readU8()))
