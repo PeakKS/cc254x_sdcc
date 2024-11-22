@@ -1,4 +1,7 @@
 from iarlib.reader import Reader
+from iarlib.symbol import Symbol
+
+
 
 class Abs8:
     ID = 0x36
@@ -17,14 +20,18 @@ class Pop8:
 
 class PushExt: # External symbol?
     ID = 0x5D
+    def __repr__(self):
+        return f'PUSHEXT {self.symbol!r}'
     def __init__(self, data: Reader):
-        data.readU8() # Unknown
+        self.symbol = Symbol.getExternal(data.readDynamic())
         data.readU32() # Unknown
 
 class PushRel:
     ID = 0x5E
+    def __repr__(self):
+        return f'PUSHREL {self.symbol!r}'
     def __init__(self, data: Reader):
-        data.readU8() # Unknown
+        self.symbol = Symbol.getPublic(data.readDynamic())
         data.readU32() # Unknown
 
 class PushAbs:

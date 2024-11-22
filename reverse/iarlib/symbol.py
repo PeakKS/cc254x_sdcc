@@ -64,19 +64,37 @@ sub_def_map = {
     0xB1: ExternalFunction,
 }
 
+location_names = {
+    0x02: "PUBLIC_REL",
+    0x05: "EXTERNAL",
+}
+
+public_table = {}
+external_table = {}
+
+location_map = {
+    0x02: public_table,
+    0x05: external_table,
+}
+
 class Symbol:
     ID = 0xCE
     
-    def __repr__(self):
-        ret = f'SYMBOL {self.type} {self.name}\n'
+    def __str__(self):
+        ret = f'{location_names[self.location]} {self.type} {self.name}\n'
         for sub in self.sub_defs:
             ret += f'\t{sub}\n'
         return ret[:-1]
+    
+    def __repr__(self):
+        return self.name
 
     def __init__(self, data: Reader):
+        global public_table
+        global external_table
         data.readU32() # Unknown
-        data.readU8() # Unknown
-        self.index = data.readU8()
+        self.location = data.readU8()
+        self.index = data.readDynamic()
         data.readU8() # Unknown
         data.readU8() # Unknown
         data.readU8() # Unknown
@@ -92,6 +110,13 @@ class Symbol:
         self.sub_defs = []
         if sub_def_map.get(data.peekU8(0)) is not None:
             self.sub_defs.append(sub_def_map.get(data.readU8())(data))
+        location_map[self.location][self.index] = self
+
+    def getPublic(index):
+        return public_table.get(index)
+    
+    def getExternal(index):
+        return external_table.get(index)
 
 class SourceCall:
     ID = 0xCB
