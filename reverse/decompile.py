@@ -6,13 +6,10 @@ from pprint import pprint
 from iarlib.reader import Reader
 section_type = {}
 
-from iarlib.library import Library
+from iarlib.library import *
 section_type[Library.ID] = Library
-from iarlib.library import Auxillary
 section_type[Auxillary.ID] = Auxillary
-from iarlib.library import Auxillary1
 section_type[Auxillary1.ID] = Auxillary1
-from iarlib.library import Version
 section_type[Version.ID] = Version
 from iarlib.keyvalue import KeyValue
 section_type[KeyValue.ID] = KeyValue
@@ -34,6 +31,11 @@ from iarlib.callframe import CallFrame
 section_type[CallFrame.ID] = CallFrame
 from iarlib.symbol import Symbol
 section_type[Symbol.ID] = Symbol
+from iarlib.instruction import *
+section_type[OrgRel.ID] = OrgRel
+section_type[AssemblyMode.ID] = AssemblyMode
+section_type[PushExt.ID] = PushExt
+section_type[DeleteTos.ID] = DeleteTos
 
 try:
     options, values = getopt.getopt(sys.argv[1:], "ho:v", ["help", "output="])
