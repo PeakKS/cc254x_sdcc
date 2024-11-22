@@ -15,12 +15,6 @@ type_map = {
     0x08: "signed long",
 }
 
-def readIndex(data: Reader):
-    index = data.readU8()
-    if index >= 0x80:
-        data.readU8() # 0x01 appended for values above 0x80 (why?)
-    return index
-
 class Pointer:
     def __repr__(self):
         return f'({self.target} *)'
@@ -128,9 +122,9 @@ class Type:
         return repr(type_map.get(self.index))
     def __init__(self, data: Reader):
         global type_map
-        self.index = readIndex(data)
+        self.index = data.readDynamic()
         subtype = data.readU8()
         type_map[self.index] = subtype_map.get(subtype)(data)
         
     def get(data: Reader):
-        return type_map.get(readIndex(data))
+        return type_map.get(data.readDynamic())

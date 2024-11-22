@@ -2,6 +2,7 @@
 
 import std.mem;
 import std.io;
+import std.core;
 
 struct FileHeader {
     u8 pad;
@@ -107,15 +108,25 @@ struct DefPtrType {
     u8 code;
 };
 
-struct TypeRef {
-    u8 index;
-    if (index >= 0x80) {
-        u8 unk; // 0x01?
+struct DynamicNumber {
+    u8 first;
+    u8 next[while (std::mem::read_unsigned($-1, 1) & 0x80)];
+};
+
+fn DynamicNumberValue(DynamicNumber d) {
+    u32 ret = d.first & 0x7F;
+    for (u32 idx = 0, idx < std::core::member_count(d.next), idx = idx + 1) {
+        ret |= ((d.next[idx] & 0x7F) << (7 * (idx + 1)));
     }
+    return ret;
+};
+
+struct TypeRef {
+    DynamicNumber dyn;
 } [[format("GetTypeRefName")]];
 
 fn GetTypeRefName(TypeRef typeRef) {
-    match (typeRef.index) {
+    match (typeRef.dyn.first) {
         (Intrinsic::UnsignedChar): return "unsigned char";
         (Intrinsic::SignedChar): return "signed char";
         (Intrinsic::UnsignedShort): return "unsigned short";
@@ -308,6 +319,7 @@ struct ColumnComponents {
 };
 
 struct CallFrameNames1 {
+    u8 id;
     u8 fmtVer;
     u16 defaultBitCount;
     u8 frameCount;
@@ -394,6 +406,8 @@ struct CallFrameAddress {
 };
 
 struct CallFrameCommon {
+    u8 id;
+    u8 ver;
     u8 nameLength;
     u8 name[nameLength];
     u8 codeAlign;
@@ -487,29 +501,26 @@ struct CallFrameIns {
 }[[name(CallFrameData_Name(ins))]];
 
 struct CallFrameData {
-    u8 type[[hidden]];
-    u8 byteCount;
-    
-    u8 unk1[2];
+    u8 common;
     u8 TOT;
     u8 unk2;
-    CallFrameInstruction ins[while(std::mem::read_unsigned($, 1) != 0xDE)];
+    u8 ins[DynamicNumberValue(parent.byteCount) - 4];
 };
 
 enum CallFrameType: u8 {
-    NAMES1 = 0x00,
-    COMMON = 0x01,
+    COMMON = 0x02,
+    DATA = 0x03,
+    NAMES1 = 0x05,
 };
 
 struct CallFrame {
     u8 type[[hidden]];
-    u8 byteCount; //NAMES1 gets +128
-    u8 unk1;
-    u8 index;
+    DynamicNumber byteCount;
     CallFrameType callFrameType;
     match (callFrameType) {
-        (CallFrameType::NAMES1): CallFrameNames1;
         (CallFrameType::COMMON): CallFrameCommon;
+        (CallFrameType::DATA): CallFrameData;
+        (CallFrameType::NAMES1): CallFrameNames1;
     }
 }[[name(callFrameType)]];
 
@@ -626,10 +637,10 @@ struct IARFile {
     OrgRel orgRel1; // 0xC7
     AsmModeChange modeChange1; //0xDE
     OrgRel orgRel2; // 0xC7
-    PushExt pushExt; // 0xD5
+    PushExt pushExt; // 0x5D
     u8 deleteTos; // 0x9C
     OrgRel orgRel3; // 0xC7
-    CallFrameData dataFrame;
+    CallFrame dataFrame;
     AsmModeChange modeChange2;
     Abs8 abs8s[while(std::mem::read_unsigned($, 1) == 0x36)];
     PushRel pushRel; // 0x5E
@@ -642,6 +653,10 @@ struct IARFile {
     Abs8 abs8s2[while(std::mem::read_unsigned($, 1) == 0x36)];
     PushExt pushExt2;
     StackError error3;
+    u8 ignore[25];
+    CallFrame data;
+    u8 ignore2[3084];
+    CallFrame data2;
 
 } [[name(header.fileName)]];
 

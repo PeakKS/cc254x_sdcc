@@ -1,24 +1,22 @@
-from iarlib.reader import Reader
+from iarlib.reader import Reader, BytesReader
 from iarlib.callframeinstruction import CallFrameInstruction
-
-import time
 
 class StackOnColumn:
     def __repr__(self):
         return f'stack based on column {self.column}'
-    def __init__(self, data: Reader):
-        self.column = data.readU8()
-        self.type = data.readU8()
+    def __init__(self, bytes: BytesReader):
+        self.column = bytes.parseU8()
+        self.type = bytes.parseU8()
 
 class StaticOverlay:
     def __repr__(self):
         return f'static overlay frame in segment "{self.name}"'
-    def __init__(self, data: Reader):
-        self.name = data.readString()
+    def __init__(self, bytes: BytesReader):
+        self.name = bytes.parseString()
 
 class BaseAddress:
     # "base address in segment type {type}"
-    def __init__(self, data: Reader):
+    def __init__(self, bytes: BytesReader):
         print("Base Address frame type not yet implemented")
         exit() # TODO
 
@@ -29,67 +27,76 @@ frame_type_map = {
 }
 
 class Names1:
-    def __init__(self, byte_count, data: Reader):
-        fmtver = data.readU8()
-        data.readU8() # Unknown
-        default_bits = data.readU8()
-        frame_count = data.readU8()
+    def __init__(self, bytes: BytesReader):
+        self.id = bytes.parseU8()
+        self.fmtver = bytes.parseU8()
+        bytes.parseU8() # Unknown
+        default_bits = bytes.parseU8()
+        frame_count = bytes.parseU8()
         self.frames = []
         for _ in range(frame_count):
-            self.frames.append(frame_type_map[data.readU8()](data))
+            self.frames.append(frame_type_map[bytes.parseU8()](bytes))
 
-        column_count = data.readU8()
-        data.readU32() # Unknown
-        data.readU32() # Unknown
+        column_count = bytes.parseU8()
+        bytes.parseU32() # Unknown
+        bytes.parseU32() # Unknown
 
-        virtual_column_count = data.readU8()
+        virtual_column_count = bytes.parseU8()
         self.virtual_columns = []
         for _ in range(virtual_column_count):
-            self.virtual_columns.append(data.readU8())
+            self.virtual_columns.append(bytes.parseU8())
 
         self.columns = []
         for _ in range(column_count):
-            column = data.readString()
-            has_bits = data.peekU8(1) < 0x20
+            column = bytes.parseString()
+            has_bits = bytes.peekU8(1) < 0x20
             if has_bits:
-                self.columns.append((column, data.readU8()))
+                self.columns.append((column, bytes.parseU8()))
             else:
                 self.columns.append((column, default_bits))
         
         self.column_components = {}
-        component_count = data.readU8()
+        component_count = bytes.parseU8()
         while (component_count != 0):
-            owner = data.readU8() # Column
+            owner = bytes.parseU8() # Column
             components = []
             for _ in range(component_count):
-                components.append(data.readU8()) # Column
+                components.append(bytes.parseU8()) # Column
             self.column_components[owner] = components
-            component_count = data.readU8()
+            component_count = bytes.parseU8()
 
 class Common:
-    def __init__(self, byte_count, data: Reader):
-        self.name = data.readString()
-        self.code_align = data.readU8()
-        self.data_align = data.readU8()
-        self.return_address = data.readU8() # Column
-        data.readU8() # Unknown
-        data.readU8() # Unknown
-        self.names_index = data.readU8() # Call frame not name table
-        end_address = data.position() + byte_count - (len(self.name) + 10)
+    def __init__(self, bytes: BytesReader):
+        self.id = bytes.parseU8()
+        self.version = bytes.parseU8()
+        self.name = bytes.parseString()
+        self.code_align = bytes.parseU8()
+        self.data_align = bytes.parseU8()
+        self.return_address = bytes.parseU8() # Column
+        bytes.parseU8() # Unknown
+        bytes.parseU8() # Unknown
+        self.names_index = bytes.parseU8() # Call frame not name table
         self.instructions = []
-        while data.position() < end_address:
-            self.instructions.append(CallFrameInstruction(data))
+        while bytes.valid():
+            self.instructions.append(CallFrameInstruction(bytes))
         
+class Data:
+    def __init__(self, bytes: bytes):
+        pass
 
 type_map = {
-    0x00: Names1,
-    0x01: Common,
+    # 0x01: Names,
+    0x02: Common,
+    0x03: Data,
+    0x05: Names1,
+    # 0x06: Data1,
+    # 0x07: CommonE,
 }
 
 class CallFrame:
     ID = 0xD4
     def __init__(self, data: Reader):
-        byte_count = data.readU8()
-        data.readU8() # Unknown
-        self.index = data.readU8()
-        self.sub = type_map[data.readU8()](byte_count, data)
+        byte_count = data.readDynamic()
+        bytes = data.read(byte_count)
+        print(byte_count)
+        self.sub = type_map[bytes.parseU8()](bytes)

@@ -1,32 +1,32 @@
-from iarlib.reader import Reader
+from iarlib.reader import BytesReader
 
 class Offset:
-    def __init__(self, column, data: Reader):
+    def __init__(self, column, data: BytesReader):
         self.column = column
-        self.offset = data.readU8()
+        self.offset = data.parseU8()
 
 class Undefined:
-    def __init__(self, data: Reader):
-        self.column = data.readU8()
+    def __init__(self, data: BytesReader):
+        self.column = data.parseU8()
 
 class SameValue:
-    def __init__(self, data: Reader):
-        self.column = data.readU8()
+    def __init__(self, data: BytesReader):
+        self.column = data.parseU8()
 
 class DefaultCallFrameAddress:
-    def __init__(self, data: Reader):
-        self.column = data.readU8()
-        self.offset = data.readU8()
+    def __init__(self, data: BytesReader):
+        self.column = data.parseU8()
+        self.offset = data.parseU8()
 
 class IAR_DefaultCallFrameAddressInstruction:
-    def __init__(self, data: Reader):
-        data.readU8() # Unknown
-        self.column = data.readU8()
-        self.offset = data.readU8()
+    def __init__(self, data: BytesReader):
+        data.parseU8() # Unknown
+        self.column = data.parseU8()
+        self.offset = data.parseU8()
 
 class IAR_DefaultCallFrameAddressInstructionStaticOverlay:
-    def __init__(self, data: Reader):
-        self.frame = data.readU8()
+    def __init__(self, data: BytesReader):
+        self.frame = data.parseU8()
 
 call_frame_instruction_map = {
     # 0x01: SetLocation,
@@ -66,8 +66,8 @@ call_frame_instruction_map = {
 class CallFrameInstruction:
     def __repr__(self):
         return f'{self.instruction}'
-    def __init__(self, data: Reader):
-        type = data.readU8()
+    def __init__(self, data: BytesReader):
+        type = data.parseU8()
         if type > 128 and type < 192:
             # Special case? Type is column index
             self.instruction = Offset(type - 128, data)
