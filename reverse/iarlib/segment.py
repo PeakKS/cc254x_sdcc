@@ -5,6 +5,7 @@ type_map = {
     0x22: "DATA",
     0x23: "XDATA",
     0x24: "IDATA",
+    0x27: "CONST",
 }
 
 spa_map = {

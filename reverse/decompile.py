@@ -11,6 +11,7 @@ section_type[Library.ID] = Library
 section_type[Auxillary.ID] = Auxillary
 section_type[Auxillary1.ID] = Auxillary1
 section_type[Version.ID] = Version
+section_type[End.ID] = End
 from iarlib.keyvalue import KeyValue
 section_type[KeyValue.ID] = KeyValue
 from iarlib.memoryinfo import MemoryInfo
@@ -29,13 +30,27 @@ from iarlib.segment import Segment
 section_type[Segment.ID] = Segment
 from iarlib.callframe import CallFrame
 section_type[CallFrame.ID] = CallFrame
-from iarlib.symbol import Symbol
+from iarlib.symbol import Symbol, SourceCall
 section_type[Symbol.ID] = Symbol
+section_type[SourceCall.ID] = SourceCall
 from iarlib.instruction import *
 section_type[OrgRel.ID] = OrgRel
 section_type[AssemblyMode.ID] = AssemblyMode
 section_type[PushExt.ID] = PushExt
 section_type[DeleteTos.ID] = DeleteTos
+section_type[Abs8.ID] = Abs8
+section_type[Abs16.ID] = Abs16
+section_type[Pop8.ID] = Pop8
+section_type[PushRel.ID] = PushRel
+section_type[PushAbs.ID] = PushAbs
+section_type[PushPcr.ID] = PushPcr
+section_type[Minus.ID] = Minus
+section_type[Pop24.ID] = Pop24
+from iarlib.error import *
+section_type[StackError.ID] = StackError
+section_type[Check.ID] = Check
+section_type[Copy.ID] = Copy
+section_type[LSR.ID] = LSR
 
 try:
     options, values = getopt.getopt(sys.argv[1:], "ho:v", ["help", "output="])
@@ -63,9 +78,13 @@ while (data.valid()):
     section_id = data.readU8()
     if section_type.get(section_id) is not None:
         sections.append(section_type[section_id](data))
+    elif section_id == 0xFF:
+        pprint(sections)
+        print("Successfully read file")
+        break
     else:
         pprint(sections)
         print(f"Unknown section ID: {section_id:02X}")
         exit(1)
 
-pprint(sections)
+print("Exiting...")

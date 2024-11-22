@@ -12,6 +12,7 @@ class FrameSize:
         self.flags = data.readU16()
 
 class FrameCount:
+    ID = 0xC4
     def __str__(self):
         ret = f'Frames:\n'
         for fs in self.frame_sizes:
@@ -39,7 +40,7 @@ class Function:
         self.func_def = data.readU32()
         data.readU16() # Unknown
         self.counts = []
-        while(data.peekU8(0) == 0xC4):
+        while(data.peekU8(0) == FrameCount.ID):
             data.readU8()
             self.counts.append(FrameCount(data))
 
@@ -91,3 +92,14 @@ class Symbol:
         self.sub_defs = []
         if sub_def_map.get(data.peekU8(0)) is not None:
             self.sub_defs.append(sub_def_map.get(data.readU8())(data))
+
+class SourceCall:
+    ID = 0xCB
+    def __init__(self, data: Reader):
+        self.caller = data.readU16()
+        self.callee = data.readU16()
+        self.flags = data.readU16()
+        self.counts = []
+        while(data.peekU8(0) == FrameCount.ID):
+            data.readU8()
+            self.counts.append(FrameCount(data))

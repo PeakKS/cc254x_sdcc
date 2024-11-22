@@ -81,8 +81,10 @@ class Common:
             self.instructions.append(CallFrameInstruction(bytes))
         
 class Data:
-    def __init__(self, bytes: bytes):
-        pass
+    def __init__(self, bytes: BytesReader):
+        self.common = bytes.parseU8()
+        self.tot = bytes.parseU8()
+        bytes.parseU8() # Unknown
 
 type_map = {
     # 0x01: Names,
@@ -98,5 +100,4 @@ class CallFrame:
     def __init__(self, data: Reader):
         byte_count = data.readDynamic()
         bytes = data.read(byte_count)
-        print(byte_count)
         self.sub = type_map[bytes.parseU8()](bytes)

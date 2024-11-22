@@ -37,3 +37,8 @@ class Auxillary1:
     def __init__(self, data: Reader):
         self.flags = data.readU16()
         self.version = data.readString()
+
+class End:
+    ID = 0x3F
+    def __init__(self, data:Reader):
+        self.crc = data.readU16()
