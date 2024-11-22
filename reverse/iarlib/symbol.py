@@ -64,8 +64,7 @@ sub_def_map = {
 }
 
 class Symbol:
-    def ID():
-        return 0xCE
+    ID = 0xCE
     
     def __repr__(self):
         ret = f'SYMBOL {self.type} {self.name}\n'

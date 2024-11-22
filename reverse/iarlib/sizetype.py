@@ -21,8 +21,7 @@ size_map = {
 }
 
 class SizeType:
-    def ID():
-        return 0x4F
+    ID = 0x4F
     def __repr__(self):
         return f'{size_map[self.type]} = {self.size}'
     def __init__(self, data: Reader):

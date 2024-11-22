@@ -15,8 +15,7 @@ intrinsic_map = {
 meminfo_map = {}
 
 class MemoryInfo:
-    def ID():
-        return 0xC6
+    ID = 0xC6
     def __repr__(self):
         return self.name
     def __init__(self, data: Reader):

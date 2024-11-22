@@ -123,8 +123,7 @@ subtype_map = {
 }
 
 class Type:
-    def ID():
-        return 0x4A
+    ID = 0x4A
     def __repr__(self):
         return repr(type_map.get(self.index))
     def __init__(self, data: Reader):

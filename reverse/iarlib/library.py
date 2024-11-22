@@ -2,8 +2,7 @@ from datetime import date
 from iarlib.reader import Reader
 
 class Library:
-    def ID():
-        return 0x00
+    ID = 0x00
     def __str__(self):
         return f'{self.name}.c {self.date} REV={self.revision} CPA={self.cpa}'
     def __repr__(self):
@@ -19,8 +18,7 @@ class Library:
         self.name = data.readString()
 
 class Version:
-    def ID():
-        return 0xBD
+    ID = 0xBD
     def __repr__(self):
         return f'{self.major}.{self.minor}.{self.revision}'
     def __init__(self, data: Reader):
@@ -30,14 +28,12 @@ class Version:
         data.readU8() # Unknown (padding?)
 
 class Auxillary:
-    def ID():
-        return 0x53
+    ID = 0x53
     def __init__(self, data: Reader):
         self.flags = data.readU16()
 
 class Auxillary1:
-    def ID():
-        return 0x54
+    ID = 0x54
     def __init__(self, data: Reader):
         self.flags = data.readU16()
         self.version = data.readString()

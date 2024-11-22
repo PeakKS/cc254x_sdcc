@@ -13,8 +13,7 @@ spa_map = {
 }
 
 class Segment:
-    def ID():
-        return 0x4B
+    ID = 0x4B
     def __repr__(self):
         return f'{self.index:02X}: {self.name} {self.type} SPA={self.SPA}'
     def __init__(self, data: Reader):

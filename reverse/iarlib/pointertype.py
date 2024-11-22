@@ -6,8 +6,7 @@ types = {
 }
 
 class PointerType:
-    def ID():
-        return 0xC1
+    ID = 0xC1
     def __init__(self, data: Reader):
         self.static = types.get(data.readU8())
         self.auto = types.get(data.readU8())

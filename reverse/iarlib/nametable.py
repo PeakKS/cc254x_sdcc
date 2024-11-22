@@ -3,8 +3,7 @@ from iarlib.reader import Reader
 names = []
 
 class NameTable:
-    def ID():
-        return 0xCD
+    ID = 0xCD
     def __repr__(self):
         return self.name
     def __init__(self, data: Reader):

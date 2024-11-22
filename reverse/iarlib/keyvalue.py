@@ -3,8 +3,7 @@ from iarlib.reader import Reader
 key_values = {}
 
 class KeyValue:
-    def ID():
-        return 0xC9
+    ID = 0xC9
     
     def __init__(self, data: Reader):
         global key_values

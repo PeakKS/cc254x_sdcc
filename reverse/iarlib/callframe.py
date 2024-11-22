@@ -87,8 +87,7 @@ type_map = {
 }
 
 class CallFrame:
-    def ID():
-        return 0xD4
+    ID = 0xD4
     def __init__(self, data: Reader):
         byte_count = data.readU8()
         data.readU8() # Unknown

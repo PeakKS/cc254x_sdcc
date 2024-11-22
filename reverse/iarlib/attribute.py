@@ -5,8 +5,7 @@ types = {
 }
 
 class Attribute:
-    def ID():
-        return 0xD3
+    ID = 0xD3
     def __init__(self, data: Reader):
         data.readU16() # Size
         self.type = types.get(data.readU8())

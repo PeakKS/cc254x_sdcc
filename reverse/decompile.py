@@ -7,33 +7,33 @@ from iarlib.reader import Reader
 section_type = {}
 
 from iarlib.library import Library
-section_type[Library.ID()] = Library
+section_type[Library.ID] = Library
 from iarlib.library import Auxillary
-section_type[Auxillary.ID()] = Auxillary
+section_type[Auxillary.ID] = Auxillary
 from iarlib.library import Auxillary1
-section_type[Auxillary1.ID()] = Auxillary1
+section_type[Auxillary1.ID] = Auxillary1
 from iarlib.library import Version
-section_type[Version.ID()] = Version
+section_type[Version.ID] = Version
 from iarlib.keyvalue import KeyValue
-section_type[KeyValue.ID()] = KeyValue
+section_type[KeyValue.ID] = KeyValue
 from iarlib.memoryinfo import MemoryInfo
-section_type[MemoryInfo.ID()] = MemoryInfo
+section_type[MemoryInfo.ID] = MemoryInfo
 from iarlib.attribute import Attribute
-section_type[Attribute.ID()] = Attribute
+section_type[Attribute.ID] = Attribute
 from iarlib.nametable import NameTable
-section_type[NameTable.ID()] = NameTable
+section_type[NameTable.ID] = NameTable
 from iarlib.pointertype import PointerType
-section_type[PointerType.ID()] = PointerType
+section_type[PointerType.ID] = PointerType
 from iarlib.type import Type
-section_type[Type.ID()] = Type
+section_type[Type.ID] = Type
 from iarlib.sizetype import SizeType
-section_type[SizeType.ID()] = SizeType
+section_type[SizeType.ID] = SizeType
 from iarlib.segment import Segment
-section_type[Segment.ID()] = Segment
+section_type[Segment.ID] = Segment
 from iarlib.callframe import CallFrame
-section_type[CallFrame.ID()] = CallFrame
+section_type[CallFrame.ID] = CallFrame
 from iarlib.symbol import Symbol
-section_type[Symbol.ID()] = Symbol
+section_type[Symbol.ID] = Symbol
 
 try:
     options, values = getopt.getopt(sys.argv[1:], "ho:v", ["help", "output="])
