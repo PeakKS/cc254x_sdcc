@@ -79,12 +79,13 @@ while (data.valid()):
     if section_type.get(section_id) is not None:
         sections.append(section_type[section_id](data))
     elif section_id == 0xFF:
-        pprint(sections)
         print("Successfully read file")
         break
     else:
         pprint(sections)
         print(f"Unknown section ID: {section_id:02X}")
         exit(1)
+
+
 
 print("Exiting...")

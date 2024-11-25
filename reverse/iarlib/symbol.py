@@ -26,6 +26,11 @@ class FrameCount:
             data.readU8()
             self.frame_sizes.append(FrameSize(data))
 
+function_table = {}
+
+def getFunction(index):
+    return function_table.get(index)
+
 class Function:
     def __str__(self):
         ret = f'FUNC={self.func_index:04X} FILE={self.file:04X} LINE={self.line:04X} DEF={self.func_def:08X}\n'
@@ -43,6 +48,7 @@ class Function:
         while(data.peekU8(0) == FrameCount.ID):
             data.readU8()
             self.counts.append(FrameCount(data))
+        function_table[self.func_index] = self
 
 class ExternalFunction:
     def __str__(self):
@@ -58,6 +64,7 @@ class ExternalFunction:
         while(data.peekU8(0) == 0xC4):
             data.readU8()
             self.counts.append(FrameCount(data))
+        function_table[self.func_index] = self
 
 sub_def_map = {
     0xB0: Function,
@@ -69,11 +76,11 @@ location_names = {
     0x05: "EXTERNAL",
 }
 
-public_table = {}
+relocatable_table = {}
 external_table = {}
 
 location_map = {
-    0x02: public_table,
+    0x02: relocatable_table,
     0x05: external_table,
 }
 
@@ -81,16 +88,17 @@ class Symbol:
     ID = 0xCE
     
     def __str__(self):
-        ret = f'{location_names[self.location]} {self.type} {self.name}\n'
-        for sub in self.sub_defs:
-            ret += f'\t{sub}\n'
+        ret = f'{location_names[self.location]} {self.type} {self.name}\n{self.func}'
         return ret[:-1]
     
     def __repr__(self):
-        return self.name
+            if self.func is not None:
+                return f'{self.name} {self.type!r}'
+            else:
+                return f'{self.type!r} {self.name}'
 
     def __init__(self, data: Reader):
-        global public_table
+        global relocatable_table
         global external_table
         data.readU32() # Unknown
         self.location = data.readU8()
@@ -107,24 +115,28 @@ class Symbol:
         data.readU8()
         data.readU8()
         data.readU8()
-        self.sub_defs = []
         if sub_def_map.get(data.peekU8(0)) is not None:
-            self.sub_defs.append(sub_def_map.get(data.readU8())(data))
+            self.func = sub_def_map.get(data.readU8())(data)
+        else:
+            self.func = None
         location_map[self.location][self.index] = self
 
-    def getPublic(index):
-        return public_table.get(index)
+    def getRelocatable(index):
+        return relocatable_table.get(index)
     
     def getExternal(index):
         return external_table.get(index)
 
 class SourceCall:
     ID = 0xCB
+    def __repr__(self):
+        return f'Call Flags: {self.flags:04X}'
     def __init__(self, data: Reader):
-        self.caller = data.readU16()
-        self.callee = data.readU16()
+        self.caller = getFunction(data.readU16())
+        self.callee = getFunction(data.readU16())
         self.flags = data.readU16()
         self.counts = []
         while(data.peekU8(0) == FrameCount.ID):
             data.readU8()
             self.counts.append(FrameCount(data))
+        print(self)

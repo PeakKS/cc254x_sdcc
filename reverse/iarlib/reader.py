@@ -69,6 +69,19 @@ class Reader:
         self.data.seek(-1 - offset, os.SEEK_CUR)
         return ret
     
+    def peekDynamic(self, initial_next) -> int:
+        loop = self.peekU8(initial_next)
+        ret = loop & 0x7F
+        offset = 7
+        next = 1
+        while loop & 0x80:
+            loop = self.peekU8(initial_next + next)
+            byte = loop & 0x7F
+            ret = ret | (byte << offset)
+            offset += 7
+            next += 1
+        return ret
+    
     def readU16(self) -> int:
         return int.from_bytes(self.data.read(2))
     

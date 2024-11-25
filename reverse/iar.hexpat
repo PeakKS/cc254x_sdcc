@@ -537,9 +537,15 @@ struct SubDefCount {
     SubDefFrameSize frameSizes[count];
 };
 
+enum SymbolLocation: u8 {
+    PublicRel = 0x02,
+    External = 0x05,
+};
+
 struct SymbolDef {
     u8 type[[hidden]];
-    u8 unk1[5];
+    u8 unk1[4];
+    SymbolLocation;
     u8 index;
     u8 unk2[7];
     u8 nameIndex;
@@ -581,7 +587,7 @@ struct AsmModeChange {
 
 struct PushExt {
     u8 type[[hidden]];
-    u8 num;
+    DynamicNumber num;
     u32 unk;
 };
 
@@ -621,6 +627,26 @@ struct Pop8 {
     u8 type;
 };
 
+struct SrcCall {
+    u8 type[[hidden]];
+    u16 caller;
+    u16 callee;
+    u16 flags;
+    SubDefCount counts[while(std::mem::read_unsigned($, 1) == 0xC4)];
+};
+
+struct FullError {
+    StackError;
+    Check;
+    StackError;
+    Copy;
+    LSR;
+};
+
+struct Pop24 {
+    u8 type[[hidden]];
+};
+
 struct IARFile {
     FileHeader header;
     
@@ -634,29 +660,143 @@ struct IARFile {
     Segment segments[while(std::mem::read_unsigned($, 1) == 0x4B)];
     CallFrame callFrames[while(std::mem::read_unsigned($, 1) == 0xD4)];
     SymbolDef symbols[while(std::mem::read_unsigned($, 1) == 0xCE)];
-    OrgRel orgRel1; // 0xC7
-    AsmModeChange modeChange1; //0xDE
-    OrgRel orgRel2; // 0xC7
-    PushExt pushExt; // 0x5D
-    u8 deleteTos; // 0x9C
-    OrgRel orgRel3; // 0xC7
-    CallFrame dataFrame;
-    AsmModeChange modeChange2;
-    Abs8 abs8s[while(std::mem::read_unsigned($, 1) == 0x36)];
-    PushRel pushRel; // 0x5E
-    StackError error1; // 0x9D
-    Check check; // 0x73
-    StackError error2; // 0x9D
-    Copy copy; // 0x70
-    LSR lsr; // 0x6E
-    Pop8 pop[2]; // 0x5A
-    Abs8 abs8s2[while(std::mem::read_unsigned($, 1) == 0x36)];
-    PushExt pushExt2;
-    StackError error3;
-    u8 ignore[25];
-    CallFrame data;
-    u8 ignore2[3084];
-    CallFrame data2;
+    OrgRel;
+    AsmModeChange;
+    OrgRel;
+    PushExt;
+    u8;
+        OrgRel;
+    AsmModeChange;
+    OrgRel;
+    PushExt;
+    u8;
+        OrgRel;
+    AsmModeChange;
+    OrgRel;
+    PushExt;
+    u8;
+        OrgRel;
+    AsmModeChange;
+    OrgRel;
+    PushExt;
+    u8;
+        OrgRel;
+    AsmModeChange;
+    OrgRel;
+    PushExt;
+    u8;
+        OrgRel;
+    AsmModeChange;
+    OrgRel;
+    PushExt;
+    u8;
+    OrgRel;
+    AsmModeChange;
+    AsmModeChange;
+    u8 abs[6];
+    OrgRel;
+    CallFrame;
+    AsmModeChange;
+    SrcCall;
+    Abs8;
+    Abs8;
+    Abs8;
+    PushExt;
+    FullError;
+    Pop8;
+    Pop8;
+    Abs8;
+    Abs8;
+    PushRel;
+    FullError;
+    Pop8;
+    Pop8;
+    Abs8;
+    Abs8;
+    PushRel;
+    FullError;
+    Pop8;
+    Pop8;
+    Abs8;
+    Abs8;
+    Abs8;
+    PushRel;
+    FullError;
+    Pop8;
+    Pop8;
+    Abs8;
+    Abs8;
+    PushRel;
+    FullError;
+    Pop8;
+    Pop8;
+    Abs8;
+    Abs8;
+    PushRel;
+    FullError;
+    Pop8;
+    Pop8;
+    Abs8;
+    Abs8;
+    PushRel;
+    FullError;
+    Pop8;
+    Pop8;
+    Abs8;
+    Abs8;
+    PushExt;
+    FullError;
+    Pop8;
+    Pop8;
+    Abs8;
+    PushExt;
+    FullError;
+    Pop8;
+    Pop8;
+    Abs8;
+    Abs8;
+    Abs8;
+    Abs8;
+    Abs8;
+    PushExt;
+    FullError;
+    Pop8;
+    Pop8;
+    OrgRel;
+    CallFrame;
+    AsmModeChange;
+    SrcCall;
+    SrcCall;
+    SrcCall;
+    PushExt;
+    u8;
+    PushExt;
+    u8;
+    PushExt;
+    u8;
+    PushExt;
+    u8;
+    Abs8;
+    Abs8;
+    Abs8;
+    PushExt;
+    FullError;
+    u8 skip[2329];
+    u8 skip2[1724];
+    AsmModeChange;
+    Abs8;
+    PushExt;
+    StackError;
+    Check;
+    StackError;
+    Copy;
+    LSR;
+    Pop8;
+    Pop8;
+    AsmModeChange;
+    PushRel;
+    Pop24;
+    OrgRel;
 
 } [[name(header.fileName)]];
 

@@ -2,32 +2,43 @@ from iarlib.reader import Reader
 from iarlib.nametable import NameTable
 from iarlib.memoryinfo import MemoryInfo
 
+class Intrinsic:
+    def __repr__(self):
+        return self.name
+    def __init__(self, name, size):
+        self.name = name
+        self.size = size
+
 type_map = {
     # Intrinsic types
-    0x00: "void",
-    0x01: "unsigned char",
-    0x02: "signed char",
-    0x03: "unsigned short",
-    0x04: "signed short",
-    0x05: "unsigned int",
-    0x06: "signed int",
-    0x07: "unsigned long",
-    0x08: "signed long",
+    0x01: Intrinsic("unsigned char", 1),
+    0x02: Intrinsic("signed char", 1),
+    0x03: Intrinsic("unsigned short", 2),
+    0x04: Intrinsic("signed short", 2),
+    0x05: Intrinsic("unsigned int", 4),
+    0x06: Intrinsic("signed int", 4),
+    0x07: Intrinsic("unsigned long", 4),
+    0x08: Intrinsic("signed long", 4),
+    0x09: Intrinsic("float", 4),
+    0x0A: Intrinsic("double", 4),
+    0x0B: Intrinsic("long double", 4),
+    0x0C: Intrinsic("void", 0),
+    0x2D: Intrinsic("unsigned long long", 4),
+    0x2E: Intrinsic("signed long long", 4),
+    0x2F: Intrinsic("bool", 1),
+    0x30: Intrinsic("wchar_t", 2),
+    0x36: Intrinsic("char (unsigned)", 1), # Why??
 }
 
 class Pointer:
     def __repr__(self):
-        return f'({self.target} *)'
+        return f'({self.target!r} *)'
     def __init__(self, data: Reader):
         self.target = Type.get(data)
 
 class Function:
     def __repr__(self):
-        repr = f'{self.return_type} ('
-        for p in range(len(self.params)):
-            repr += f'{self.params[p]} ARG{p}, '
-        repr = repr.removesuffix(', ') + '){\n}'
-        return repr
+        return f'{self.return_type!r}' + self.args()
     def __init__(self, data: Reader):
         self.return_type = Type.get(data)
         self.format = data.readU8()
@@ -35,22 +46,28 @@ class Function:
         self.params = []
         for _ in range(param_count):
             self.params.append(Type.get(data))
+    def args(self):
+        ret = '('
+        for p in range(len(self.params)):
+            ret += f'{self.params[p]!r}, '
+        return ret.removesuffix(', ') + ')'
 
 class Array:
     def __repr__(self):
-        return f'{self.type} [{self.count}]'
+        return f'{self.type!r} [{self.count}]'
     def __init__(self, data: Reader):
         self.type = Type.get(data)
         self.size = data.readU32()
         self.count = data.readU32()
 
 class DataAttribute:
-    def __str__(self):
-        return str(self.memory_info)
     def __repr__(self):
-        return f'DATA_ATTR {self.memory_info} {self.data_type} GEN: {self.gen:08X} TGT: {self.target:08X}'
+        if self.memory_info is None:
+            return f'{self.data_type!r}'
+        return f'{self.data_type!r} {self.memory_info}'
     def __init__(self, data: Reader):
-        self.memory_info = MemoryInfo.get(data.readU8())
+        mem_idx = data.readU8()
+        self.memory_info = MemoryInfo.get(mem_idx)
         self.data_type = Type.get(data)
         self.gen = data.readU32()
         data.readU8() # Unknown
@@ -58,11 +75,14 @@ class DataAttribute:
 
 class FunctionAttribute:
     def __str__(self):
-        return str(self.memory_info)
+            return f'{self.func_type!r} {self.memory_info}'
     def __repr__(self):
-        return f'FUNC_ATTR {self.memory_info} {self.func_type} GEN: {self.gen:08X} TGT: {self.target:08X}'
+            return f'{self.func_type!r}'
     def __init__(self, data: Reader):
-        self.memory_info = MemoryInfo.get(data.readU8())
+        mem_idx = data.readU8()
+        self.memory_info = MemoryInfo.get(mem_idx)
+        if self.memory_info is None:
+            print(f'Memory Info {mem_idx:04X} is None!')
         self.func_type = Type.get(data)
         self.gen = data.readU32()
         data.readU8() # Unknown
@@ -70,16 +90,22 @@ class FunctionAttribute:
 
 class Typedef:
     def __str__(self):
-        return self.name
+        if isinstance(self.reference_type, Pointer):
+            if isinstance(self.reference_type.target, FunctionAttribute):
+                func = self.reference_type.target.func_type
+                return f'typedef {func.return_type!r} (*{self.name})' + func.args()
+
+        return f'typedef {self.reference_type!r} {self.name}'
     def __repr__(self):
-        return f'typedef {self.reference_type} {self.name}'
+        return self.name
     def __init__(self, data: Reader):
         self.reference_type = Type.get(data)
         self.name = NameTable.get(data.readU32())
+        print(self)
 
 class StructUnionMember:
     def __repr__(self):
-        return f'\t{self.type} {self.name}\n'
+        return f'\t{self.type!r} {self.name}\n'
     def __init__(self, data: Reader):
         data.readU32() # Index
         self.name = NameTable.get(data.readU32())
@@ -119,7 +145,7 @@ subtype_map = {
 class Type:
     ID = 0x4A
     def __repr__(self):
-        return repr(type_map.get(self.index))
+        return f'{type_map.get(self.index)!r}'
     def __init__(self, data: Reader):
         global type_map
         self.index = data.readDynamic()
@@ -127,4 +153,6 @@ class Type:
         type_map[self.index] = subtype_map.get(subtype)(data)
         
     def get(data: Reader):
-        return type_map.get(data.readDynamic())
+        idx = data.readDynamic()
+        type = type_map.get(idx)
+        return type

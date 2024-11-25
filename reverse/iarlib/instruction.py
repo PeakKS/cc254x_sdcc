@@ -1,12 +1,15 @@
 from iarlib.reader import Reader
 from iarlib.symbol import Symbol
-
+from iarlib.segment import Segment
+from iarlib.opcode import OpCode
 
 
 class Abs8:
     ID = 0x36
+    def __repr__(self):
+        return f'{self.value!r}'
     def __init__(self, data: Reader):
-        self.value = data.readU8()
+        self.value = OpCode(data)
 
 class Abs16:
     ID = 0x37
@@ -31,7 +34,7 @@ class PushRel:
     def __repr__(self):
         return f'PUSHREL {self.symbol!r}'
     def __init__(self, data: Reader):
-        self.symbol = Symbol.getPublic(data.readDynamic())
+        self.symbol = Symbol.getRelocatable(data.readDynamic())
         data.readU32() # Unknown
 
 class PushAbs:
@@ -47,7 +50,7 @@ class PushPcr:
 class Minus:
     ID = 0x64
     def __init__(self, data: Reader):
-        pass
+        pass # These decrement the stack when shared pops are used (sjmp)
 
 class DeleteTos: # Purpose?
     ID = 0x9C
@@ -61,10 +64,23 @@ class Pop24:
 
 class OrgRel:
     ID = 0xC7
+    def __repr__(self):
+        if isinstance(self.value, Symbol):
+            return f'{self.value!r}'
+        else:
+            return f'.area {self.value!r}\n.org 0x{self.offset:08X}'
     def __init__(self, data: Reader):
-        data.readU8() # Unknown
-        data.readU32() # Unknown
+        idx = data.readDynamic()
+        self.value = Symbol.getRelocatable(idx)
+        if self.value is None:
+            self.value = Segment.get(idx)
+        self.offset = data.readU32() # Unknown
+        print(self)
 
+assembly_modes = {
+    0x01: "CODE",
+    0x0A: "DATA",
+}
 class AssemblyMode:
     ID = 0xDE
     def __init__(self, data: Reader):

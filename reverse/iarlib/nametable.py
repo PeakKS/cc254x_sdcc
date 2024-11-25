@@ -14,7 +14,7 @@ class NameTable:
 
         refIndex = data.readU32()
         if refIndex != 0xFFFFFFFF:
-            self.name = names[refIndex] + self.name
+            self.name = names[refIndex] + '::' + self.name
 
         names.append(self.name)
     def get(index: int):
