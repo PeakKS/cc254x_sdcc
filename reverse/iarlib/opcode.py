@@ -319,7 +319,6 @@ class MOV:
         elif op == 0xF5:
             self.params = [Direct(data), "A"]
         elif (op & 0xF8) == 0x88:
-            print("RTOD")
             self.params = [Direct(data), Register(op)]
         elif op == 0x90:
             self.params = ["DPTR", Immediate(data)]
