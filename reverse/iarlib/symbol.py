@@ -38,7 +38,11 @@ class Function:
             ret += f'\t{count}\n'
         return ret[:-1]
     
-    def __init__(self, data: Reader):
+    def __repr__(self):
+        return f'{self.symbol!r}'
+    
+    def __init__(self, symbol, data: Reader):
+        self.symbol = symbol
         self.func_index = data.readU16()
         self.file = data.readU16()
         self.line = data.readU16()
@@ -56,8 +60,12 @@ class ExternalFunction:
         for count in self.counts:
             ret += f'\t{count}\n'
         return ret[:-1]
+    
+    def __repr__(self):
+        return f'{self.symbol!r}'
 
-    def __init__(self, data: Reader):
+    def __init__(self, symbol, data: Reader):
+        self.symbol = symbol
         self.func_index = data.readU16()
         self.func_def = data.readU32()
         self.counts = []
@@ -116,7 +124,7 @@ class Symbol:
         data.readU8()
         data.readU8()
         if sub_def_map.get(data.peekU8(0)) is not None:
-            self.func = sub_def_map.get(data.readU8())(data)
+            self.func = sub_def_map.get(data.readU8())(self, data)
         else:
             self.func = None
         location_map[self.location][self.index] = self
@@ -139,4 +147,4 @@ class SourceCall:
         while(data.peekU8(0) == FrameCount.ID):
             data.readU8()
             self.counts.append(FrameCount(data))
-        print(self)
+        print(f';Call to external function {self.callee!r} with flags {self.flags:04X}')
