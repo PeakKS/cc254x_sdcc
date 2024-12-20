@@ -78,7 +78,12 @@ class Immediate:
     def __repr__(self):
         return reprAbsOrSymbol(self.value)
     def __init__(self, data: Reader):
-        self.value = getAbsOrSymbol(data)
+        try:
+            self.value = getAbsOrSymbol(data)
+        except:
+            data.readU8()
+            self.value = Segment.get(data.readDynamic())
+            self.offset = data.readU32()
 
 # Label?
 class Offset:

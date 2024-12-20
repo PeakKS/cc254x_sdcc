@@ -37,6 +37,7 @@ common = compiler.process(
     'usb.c',
     'usb_cdc_acm.c',
     'util.c',
+    'hci.c',
   ],
 )
 
